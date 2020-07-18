@@ -93,7 +93,6 @@ const MenuItem = styled(motion.li).attrs({ variants: expandItemVariants })`
 
 const MenuLink = styled(StyledLink)`
   position: relative;
-  font-family: 'Arvo';
   display: flex;
   width: 200px;
   justify-content: center;

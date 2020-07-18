@@ -76,10 +76,9 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
-    "react-particles-js": "^2.7.1",
     "react-use": "^14.1.1",
     "styled-components": "^5.1.1",
     "typography": "^0.16.17",
-    "typography-theme-doelger": "^0.16.19"
+    "typography-theme-kirkham": "^0.16.19"
   }
 }

@@ -11918,13 +11918,6 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-particles-js@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.7.1.tgz#3d5ad39a9e8cfc2052b3ba8ac1fbe28e66b4713e"
-  integrity sha512-H3lnlcnc35HRismahWl8n/1IBNvP1u78r1YdS+QigDYwGkv4Bxqjdp3qLkQOkQnGLzaO5iu+Z4TWnyLVxOKPtA==
-  dependencies:
-    lodash "^4.17.11"
-
 react-reconciler@^0.24.0:
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.24.0.tgz#5a396b2c2f5efe8554134a5935f49f546723f2dd"
@@ -14444,10 +14437,10 @@ typography-normalize@^0.16.19:
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.16.19.tgz#58e0cf12466870c5b27006daa051fe7307780660"
   integrity sha512-vtnSv/uGBZVbd4e/ZhZB9HKBgKKlWQUXw74+ADIHHxzKp27CEf8PSR8TX1zF2qSyQ9/qMdqLwXYz8yRQFq9JLQ==
 
-typography-theme-doelger@^0.16.19:
+typography-theme-kirkham@^0.16.19:
   version "0.16.19"
-  resolved "https://registry.yarnpkg.com/typography-theme-doelger/-/typography-theme-doelger-0.16.19.tgz#dffe36af0ef4c7edf4ffeb9428bf00e85338b19d"
-  integrity sha512-/6woeY4PeZKICOLT2b3DBdABScKZRHsDX8rjpXH+zGTpoBOwDU9BHyUCneCr0hNiw3vxMqB2DKhpWwTtWd1DEA==
+  resolved "https://registry.yarnpkg.com/typography-theme-kirkham/-/typography-theme-kirkham-0.16.19.tgz#17c83ac32a24696b62546d760fd67540ad8ce582"
+  integrity sha512-l/8J7RES+aYqeq1C0iQGw9jfNQAEEu6j9lS5jhyrgH09hR1CQ5RDIEqvbcaXvIADuwgvkL8zXAJlh1ydj3TALA==
   dependencies:
     gray-percentage "^2.0.0"
     typography-breakpoint-constants "^0.16.19"

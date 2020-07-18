@@ -4,27 +4,6 @@ import styled from 'styled-components';
 import { LogoImage } from './Logo';
 import { media } from '../utils/media';
 import { PageTitle, PageTitleSecondary } from './Title';
-import Particles, { IParticlesParams } from 'react-particles-js';
-import { theme } from '@config/Theme';
-
-export const StyledParticles = styled(Particles)`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-    @media ${media.tablet} {
-      opacity: 0;
-    }
-    canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-attachment:fixed;
-    }
-    
-`
 
 const HeroWrapper = styled.div<{  main?: boolean }>`
   width: 100%;
@@ -70,43 +49,6 @@ interface IProps {
   main?: boolean;
 }
 
-const particlesOpts: IParticlesParams = {
-  particles: {
-    number: {
-      value: 120,
-      density: {
-        enable: true,
-        value_area: 1000,
-      }
-    },
-    color: {
-      value: theme.colors.primary,
-    },
-    line_linked: {
-      enable: false,
-    },
-    size: {
-      value: 6,
-      random: true
-    },
-    opacity: {
-      value: 0.6,
-      anim: {
-        enable: false,
-      }
-    },
-    shape: {
-      type: 'circle',
-    }
-   },
-  interactivity: {
-    detect_on: 'canvas',
-    events: {
-      resize: true,
-    }
-  },
-}
-
 export const Hero: FC<IProps> = ({
   title = 'Na Froncie',
   subTitle = 'Boost your frontend',
@@ -114,20 +56,17 @@ export const Hero: FC<IProps> = ({
   main = false,
 }) => {
   return (
-        <HeroWrapper main={main}>
-        <StyledParticles 
-            params={particlesOpts}
-          />
-          <TitleWrapper>
-            <LogoImage />
-            <PageTitle data-text={title}>
-              {title}
-            </PageTitle>
-            <PageTitleSecondary data-text={subTitle}>
-              {subTitle}
-            </PageTitleSecondary>
-          </TitleWrapper>
-          {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
-        </HeroWrapper>
-      )
+    <HeroWrapper main={main}>
+      <TitleWrapper>
+        <LogoImage />
+        <PageTitle data-text={title}>
+          {title}
+        </PageTitle>
+        <PageTitleSecondary data-text={subTitle}>
+          {subTitle}
+        </PageTitleSecondary>
+      </TitleWrapper>
+      {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
+    </HeroWrapper>
+  )
 };

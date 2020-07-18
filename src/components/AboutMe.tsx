@@ -36,7 +36,6 @@ const MainParagraph = styled.p`
   z-index: 10;
   position: relative;
   &::after {
-    font-weight: 'Arvo';
     content: attr(data-initiale);
     position: absolute;
     font-size: 5rem;

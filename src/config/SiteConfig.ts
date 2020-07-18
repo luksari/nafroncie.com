@@ -1,3 +1,5 @@
+import kirkham from "typography-theme-kirkham";
+
 export const config = {
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
 
@@ -23,9 +25,8 @@ export const config = {
   backgroundColor: '#2b2e3c',
 
   // Settings for typography.ts
-  headerFontFamily: 'Arvo',
-  bodyFontFamily: 'Cabin',
   baseFontSize: '18px',
+  theme: kirkham,
 
   // Social media
   siteFBAppID: '',
