@@ -11,9 +11,9 @@ export const AllTagTemplate: FunctionComponent<IPageProps> = ({ pathContext: { t
   <>
     {tags && (
       <Layout>
-        <Helmet title={`Tagi | ${config.siteTitle}`} />
+        <Helmet title={`Tags | ${config.siteTitle}`} />
         <Header>
-          <PageTitle>Tagi</PageTitle>
+          <PageTitle>Tags</PageTitle>
         </Header>
         <Content>
           {tags.map((tag, index: number) => (

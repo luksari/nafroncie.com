@@ -14,7 +14,6 @@ export const PaginationContent = styled.div`
   border-radius: 35px;
   width: 100%;
   height: 100%;
-  background-color: #eee;
 
   @media ${media.phone} {
     padding: 0 1rem;

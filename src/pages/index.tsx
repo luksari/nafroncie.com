@@ -45,7 +45,7 @@ export const IndexPage: FC<IPageProps> = ({ data }) => {
             ))}
         <SublineWrapper>
           <Link to='/blog'>
-            <Button>Wszystkie wpisy ( {totalCount} )</Button>
+            <Button>All articles ( {totalCount} )</Button>
           </Link>
         </SublineWrapper>
       </PostsContent>

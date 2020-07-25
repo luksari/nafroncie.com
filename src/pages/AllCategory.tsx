@@ -11,9 +11,9 @@ export const AllCategoryTemplate: FunctionComponent<IPageProps> = ({ pathContext
   <>
     {categories && (
       <Layout>
-        <Helmet title={`Kategorie | ${config.siteTitle}`} />
+        <Helmet title={`Categories | ${config.siteTitle}`} />
         <Header>
-          <PageTitle>Kategorie</PageTitle>
+          <PageTitle>Categories</PageTitle>
         </Header>
         <Content>
           {categories.map((category, index: number) => (

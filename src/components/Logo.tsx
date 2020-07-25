@@ -21,12 +21,7 @@ const slideFromTop = keyframes`
 `;
 
 export const LogoImage = styled(Sigil)`
-  position: absolute;
-  width: auto;
-  left: 50%;
-  transform: translateX(-50%) scale(4);
   opacity: 1;
-  top: 0;
   z-index: 1;
 `;
 

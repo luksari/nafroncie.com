@@ -21,15 +21,15 @@ const HeroWrapper = styled.div<{  main?: boolean }>`
   @media ${media.tablet} {
     height: 600px;
   }
-
 `;
 
 
+
 const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 150px auto;
+  grid-column-gap: 15px;
+  grid-template-rows: auto auto;
   @media ${media.tablet} {
     align-items: center;
   }
@@ -43,6 +43,15 @@ const ChildrenWrapper = styled.div`
   justify-content: center;
 `;
 
+const StyledLogo = styled(LogoImage)`
+  grid-column: 1/1;
+  grid-row: 1/1;
+`
+
+
+const StyledSecondaryTitle = styled(PageTitleSecondary)`
+  grid-column: 2/2;
+`
 interface IProps {
   title?: string;
   subTitle?: string;
@@ -50,7 +59,7 @@ interface IProps {
 }
 
 export const Hero: FC<IProps> = ({
-  title = 'Na Froncie',
+  title = 'leafcode',
   subTitle = 'Boost your frontend',
   children,
   main = false,
@@ -58,13 +67,13 @@ export const Hero: FC<IProps> = ({
   return (
     <HeroWrapper main={main}>
       <TitleWrapper>
-        <LogoImage />
-        <PageTitle data-text={title}>
+        <StyledLogo />
+        <PageTitle>
           {title}
         </PageTitle>
-        <PageTitleSecondary data-text={subTitle}>
+        <StyledSecondaryTitle>
           {subTitle}
-        </PageTitleSecondary>
+        </StyledSecondaryTitle>
       </TitleWrapper>
       {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
     </HeroWrapper>

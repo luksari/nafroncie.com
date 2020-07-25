@@ -1,22 +1,20 @@
 const colors = {
-  primary: '#633C78', // Color for buttons or links
-  secondary: '#633C78',
-  accent: '#F2B31B',
-  accentSecondary: '#B1800C',
+  primary: '#7EA87A', // Color for buttons or links
+  secondary: '#BCD589',
+  accent: '#21675B',
+  accentSecondary: '#469874',
   warning: '#FA6900',
   error: '#D32F2F',
-  neonPink: '#DA2EB8',
-  neonBlue: '#0AB7EB',
-  bgLight: '#ffffff', // Background color
-  darkText: '#231F20',
-  lightText: '#ffffff',
+  bgLight: '#FEF8ED', // Background color
+  darkText: '#363E4B',
+  lightText: '#FEF8ED',
   grey: {
     main: 'rgba(23, 23, 23)',
     dark: 'rgba(0, 0, 0, 0.9)',
     default: 'rgba(0, 0, 0, 0.7)',
     light: 'rgba(0, 0, 0, 0.5)',
     ultraLight: 'rgba(0, 0, 0, 0.25)',
-    bluish: '#0E1114',
+    bluish: '#363E4B',
   },
 };
 
@@ -24,8 +22,6 @@ const gradients = {
   primary: (angle: number) => `linear-gradient(${angle}deg, ${colors.primary}, ${colors.secondary})`,
   accent: (angle: number) => `linear-gradient(${angle}deg, ${colors.accent}, ${colors.accentSecondary})`,
   warning: (angle: number) => `linear-gradient(${angle}deg, ${colors.warning}, ${colors.error})`,
-  neonBlue: (angle: number) => `linear-gradient(${angle}deg, ${colors.neonBlue}, ${colors.secondary})`,
-  neonPink: (angle: number) => `linear-gradient(${angle}deg, ${colors.neonPink}, ${colors.error})`,
 };
 
 const transitions = {

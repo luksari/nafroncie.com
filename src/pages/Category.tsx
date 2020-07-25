@@ -22,11 +22,11 @@ export const Category: FC<IPageProps> = ({ pathContext: { posts, categoryName } 
   return (
     <Layout>
       <Helmet title={`${categoryName} | ${config.siteTitle}`} />
-      <Hero title={'Kategorie'} subTitle={`#${categoryName}`}>
+      <Hero title={'Categories'} subTitle={`#${categoryName}`}>
         <>
           <Subline sectionTitle>{subline}</Subline>
           <Button>
-            <StyledLink to={'/categories'}>Wszystkie kategorie</StyledLink>
+            <StyledLink to={'/categories'}>All categories</StyledLink>
           </Button>
         </>
       </Hero>

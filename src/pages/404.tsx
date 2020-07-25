@@ -6,14 +6,14 @@ import { config } from '@config/SiteConfig';
 
 export const NotFoundPage: FC = () => (
   <Layout>
-    <Helmet title={`404 Nie znaleziono | ${config.siteTitle}`} />
+    <Helmet title={`404 Not found | ${config.siteTitle}`} />
     <Header>
       <Link to='/'>{config.siteTitle}</Link>
-      <PageTitle>Nie znaleziono</PageTitle>
+      <PageTitle>Not found</PageTitle>
     </Header>
     <Wrapper>
       <Content>
-        <p>Hej, chyba nie powinno Cię tu być 😔</p>
+        <p>Hey, I think that something went wrong because you should not be here 🤔</p>
       </Content>
     </Wrapper>
   </Layout>
