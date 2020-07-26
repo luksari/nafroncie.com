@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { LogoImage } from './Logo';
 import { media } from '../utils/media';
 import { PageTitle, PageTitleSecondary } from './Title';
+import { motion } from 'framer-motion';
 
-const HeroWrapper = styled.div<{  main?: boolean }>`
+const HeroWrapper = styled.div<{ main?: boolean }>`
   width: 100%;
   position: relative;
   justify-content: center;
@@ -23,10 +24,12 @@ const HeroWrapper = styled.div<{  main?: boolean }>`
   }
 `;
 
-
-
-const TitleWrapper = styled.div`
+const TitleWrapper = styled(motion.div).attrs({ 
+    whileHover: { y: '-15px', transition: { duration: 0.3, type: "tween" }},
+    whileTap: { rotateZ: '-8deg', scale: 1.1 }
+  })`
   display: grid;
+  cursor: pointer;
   grid-template-columns: 150px auto;
   grid-column-gap: 15px;
   grid-template-rows: auto auto;
@@ -48,10 +51,28 @@ const StyledLogo = styled(LogoImage)`
   grid-row: 1/1;
 `
 
+const StyledMainTitle = styled(PageTitle)`
+  span {
+    display: inline-block;
+    border-bottom: 3px solid ${({ theme }) => theme.colors.darkText};
+  }
+  span:first-child {
+    background: ${({ theme }) => theme.colors.lightText};
+    color: ${({ theme }) => theme.colors.darkText};
+    padding: 0 25px 0 0;
+
+  }
+  span:last-child {
+    background: ${({ theme }) => theme.colors.darkText};
+    color: ${({ theme }) => theme.colors.lightText};
+    padding: 0 25px;
+  }
+`
 
 const StyledSecondaryTitle = styled(PageTitleSecondary)`
   grid-column: 2/2;
 `
+
 interface IProps {
   title?: string;
   subTitle?: string;
@@ -68,9 +89,20 @@ export const Hero: FC<IProps> = ({
     <HeroWrapper main={main}>
       <TitleWrapper>
         <StyledLogo />
-        <PageTitle>
-          {title}
-        </PageTitle>
+        {main 
+          ? (
+            <StyledMainTitle>
+              <span>leaf</span>
+              <span>code</span>
+            </StyledMainTitle>
+          )
+          : (
+            <PageTitle>
+             {title}
+            </PageTitle>
+          )
+     
+      } 
         <StyledSecondaryTitle>
           {subTitle}
         </StyledSecondaryTitle>

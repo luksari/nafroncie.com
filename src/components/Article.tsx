@@ -11,14 +11,14 @@ import { motion } from 'framer-motion';
 const Banner = styled(Img)`
   margin: 0;
   border-radius: 12px;
-  height: 300px;
+  height: 100%;
 `;
 
 const Post = styled(motion.article)<{ readonly primary?: boolean }>`
   display: grid;
   margin: 15px;
   overflow: hidden;
-  max-height: 300px;
+  max-height: 350px;
   width: 600px;
   flex: ${({ primary }) => (primary ? '1 1 100%' : '1 1 25%')};
   grid-template-columns: ${({ primary }) => (primary ? '1.2fr 1fr' : '1fr')};

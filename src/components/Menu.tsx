@@ -97,9 +97,8 @@ const MenuLink = styled(StyledLink)`
   width: 200px;
   justify-content: center;
   color: ${({ theme }) => theme.colors.lightText};
-  transition: transform 300ms ease-in-out, color 300ms ease-in-out;
+  transition: transform 150ms ease-out;
   &:hover {
-    color: ${({ theme }) => theme.colors.accent};
     transform: scale(1.1)
   }
   &::after {
@@ -108,10 +107,9 @@ const MenuLink = styled(StyledLink)`
     position: absolute;
     z-index: -1;
     left: 0;
-    top: 0;
     width: 100%;
     height: 45px;
-    top: -10px;
+    top: -12px;
     background-position: 50% 50%;
     background-size: contain;
     background-repeat: no-repeat;

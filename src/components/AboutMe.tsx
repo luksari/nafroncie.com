@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components'
 import GatsbyImage from 'gatsby-image'
 import { Emoji } from './Emoji'
 import { getImageByName } from '@utils/getImageByName'
+import { UISvgAnimation } from './UISvgAnimation'
 
 const PicturesQuery = graphql`
     query PicturesQuery {
@@ -46,13 +47,14 @@ const MainParagraph = styled.p`
 `
 
 const StyledImage = styled(GatsbyImage)`
-  width: 350px;
+  width: 100%;
+  max-width: 300px;
+  max-height: 400px;
   height: auto;
   position: relative;
   border-radius: 4px;
   &::after {
     content: '';
-    background: linear-gradient(-90deg, #ffffffee, #ffffffee 15%, #ffffff00);
     position: absolute;
     left: 0;
     top: 0;
@@ -61,9 +63,15 @@ const StyledImage = styled(GatsbyImage)`
   }
 `
 
+const StyledSVG = styled(UISvgAnimation)`
+  max-width: 250px;
+  position: relative;
+`
+
 const ParagraphContainer = styled.div<{ reversed?: boolean }>`
   display: flex;
   height: 100%;
+  max-height: 500px;
   align-items: center;
   flex-direction: ${({ reversed }) => reversed ? 'row-reverse' : 'row'};
   justify-content: flex-start;
@@ -73,13 +81,13 @@ const ParagraphContainer = styled.div<{ reversed?: boolean }>`
   }
   ${StyledImage} {
     &::after {
-      ${({ reversed }) => reversed 
+      ${({ reversed, }) => reversed 
       ? css`
-        background: linear-gradient(90deg, #ffffffee, #ffffffee 15%, #ffffff00);
+        background: linear-gradient(90deg, #FEF8EDee, #FEF8EDee, 50%, #FEF8ED00);
       ` 
       : css`
-        background: linear-gradient(-90deg, #ffffffee, #ffffffee 15%, #ffffff00);
-      `
+        background: linear-gradient(-90deg, #FEF8EDee, #FEF8EDee, 50%, #ffffff00);
+      ` 
       }
     }
   }
@@ -95,7 +103,6 @@ export const AboutMe = () => {
   const images = useStaticQuery(PicturesQuery)
 
   const image1 = getImageByName(images, 'AboutMe1');
-  const image2 = getImageByName(images, 'AboutMe2');
   const image3 = getImageByName(images, 'AboutMe3');
   return (
     <AboutMeContent>
@@ -110,7 +117,7 @@ export const AboutMe = () => {
         </MainParagraph>
       </ParagraphContainer>
       <ParagraphContainer reversed>
-        <StyledImage fluid={image2.node.fluid}/>
+        <StyledSVG />
         <MainParagraph data-initiale='B'>
           Besides coding, I also do like UI/UX concerns, animations stuff drives me crazy, 
           these aspects of my creative soul, improves my details and micro-interactions awareness.
@@ -118,7 +125,7 @@ export const AboutMe = () => {
       </ParagraphContainer>
       <ParagraphContainer>
         <StyledImage fluid={image3.node.fluid}/>
-        <MainParagraph data-initiale='B'>
+        <MainParagraph data-initiale='I'>
           I am also keen on traveling, meeting new people. 
           I do like learning new languages,
           for now I have chosen Spanish and Brasilian Portuguese to learn.

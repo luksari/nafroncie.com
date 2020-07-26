@@ -69,6 +69,7 @@
     "gatsby-remark-prismjs": "^3.4.3",
     "gatsby-source-filesystem": "^2.0.4",
     "gatsby-transformer-sharp": "^2.2.13",
+    "gsap": "^3.4.2",
     "intersection-observer": "^0.7.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",

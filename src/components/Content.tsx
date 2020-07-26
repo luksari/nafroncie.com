@@ -17,7 +17,7 @@ export const Content = styled.section`
 `;
 
 export const PostsContent = styled.section`
-  padding: 0 15%;
+  padding: 0 20%;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -35,5 +35,5 @@ export const PostsContent = styled.section`
 `;
 
 export const AboutMeContent = styled(Content)`
-  padding: 3rem 15%;
+  padding: 3rem 20%;
 `;

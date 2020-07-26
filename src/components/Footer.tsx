@@ -4,7 +4,7 @@ export const Footer = styled.footer`
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.colors.bgLight};
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.darkText};
   align-self: flex-end;
   text-align: center;
   margin-top: auto;
@@ -13,6 +13,6 @@ export const Footer = styled.footer`
     font-size: 0.75rem;
   }
   a {
-    color: white;
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;

@@ -9,7 +9,7 @@ import { Menu } from './Menu';
 
 const GlobalStyle = createGlobalStyle`
   ::selection {
-    color: ${theme.colors.primary};
+    color: ${theme.colors.bgLight};
     background: ${theme.colors.accent};
   }
   body {

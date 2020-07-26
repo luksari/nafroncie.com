@@ -58,11 +58,12 @@ export const PostTitle = styled(PageTitle)`
 `
 
 export const PageTitleSecondary = styled.h2`
-  font-style: italic;
+  font-family: 'Fira sans', sans-serif;
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 1.4rem;
   z-index: 1;
   margin: 0;
+  margin-top: 15px;
   color: ${({ theme }) => theme.colors.darkText};
   @media ${media.tablet} {
     font-size: 1.9rem;
