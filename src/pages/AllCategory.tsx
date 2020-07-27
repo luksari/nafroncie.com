@@ -2,8 +2,7 @@ import { Link } from 'gatsby';
 import { kebabCase } from 'lodash';
 import React, { FunctionComponent } from 'react';
 import Helmet from 'react-helmet';
-import { AnimatedTitle, Content, Header, Layout, PageTitle } from '../components';
-
+import { AnimatedTitle, Content, Header, Layout, PageTitle, Hero } from '../components';
 import { config } from '@config/SiteConfig';
 import { IPageProps } from '../models/PageProps';
 
@@ -12,9 +11,9 @@ export const AllCategoryTemplate: FunctionComponent<IPageProps> = ({ pathContext
     {categories && (
       <Layout>
         <Helmet title={`Categories | ${config.siteTitle}`} />
-        <Header>
-          <PageTitle>Categories</PageTitle>
-        </Header>
+        <Hero title='Categories' subTitle='Check out all of them' >
+
+        </Hero>
         <Content>
           {categories.map((category, index: number) => (
             <AnimatedTitle delay={index} key={index}>

@@ -22,11 +22,11 @@ export const TagTemplate: FunctionComponent<IPageProps> = ({ pathContext: { post
   return (
     <Layout>
       <Helmet title={`${'Tagi'} | ${config.siteTitle}`} />
-      <Hero title={'Tagi'} subTitle={`#${tagName}`}>
+      <Hero title='Tags' subTitle={`#${tagName}`}>
         <>
           <Subline sectionTitle>{subline}</Subline>
           <Button>
-            <StyledLink to={'/tags'}>Wszystkie tagi</StyledLink>
+            <StyledLink to={'/tags'}>All tags</StyledLink>
           </Button>
         </>
       </Hero>

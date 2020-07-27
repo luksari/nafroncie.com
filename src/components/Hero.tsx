@@ -57,7 +57,7 @@ const StyledMainTitle = styled(PageTitle)`
     border-bottom: 3px solid ${({ theme }) => theme.colors.darkText};
   }
   span:first-child {
-    background: ${({ theme }) => theme.colors.lightText};
+    background: ${({ theme }) => theme.colors.bgLight};
     color: ${({ theme }) => theme.colors.darkText};
     padding: 0 25px 0 0;
 
