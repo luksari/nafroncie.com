@@ -29,7 +29,7 @@ const ButtonContainer = styled.button`
 const Burger = styled.div<{ readonly isExpanded: boolean }>`
   width: 100%;
   height: 3px;
-  background: ${props => props.theme.gradients.primary(90)};
+  background: ${props => props.theme.gradients.accent(90)};
   position: relative;
   &::before,
   &::after {
@@ -39,7 +39,7 @@ const Burger = styled.div<{ readonly isExpanded: boolean }>`
     position: absolute;
     height: 3px;
     left: 0;
-    background: ${props => props.theme.gradients.primary(90)};
+    background: ${props => props.theme.gradients.accent(90)};
   }
   &::before {
     top: -9px;

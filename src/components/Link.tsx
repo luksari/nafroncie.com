@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-export const StyledLink = styled(Link)<{ color?: string; bold?: boolean }>`
+export const StyledLink = styled(Link)`
   font-weight: 700;
 `;
 

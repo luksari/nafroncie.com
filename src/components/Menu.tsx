@@ -1,6 +1,6 @@
 import React, { FC, useState, useMemo } from 'react';
 import { useDebounce, useWindowScroll, useWindowSize } from 'react-use';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BurgerButton } from '.';
 import { media } from '../utils/media';
 import { StyledLink } from './Link';
@@ -8,7 +8,8 @@ import { LogoSigil } from './Logo';
 import { Link } from 'gatsby';
 import { motion, Variants } from 'framer-motion';
 import { useWindowLocation } from '@utils/useWindowLocation';
-import * as MenuMark from "@static/images/mark.png"
+import { useViewportScroll, useTransform } from 'framer-motion';
+import { theme } from '@config/Theme';
 
 const visibilityVariants = {
   visible: { y: 0 },
@@ -50,7 +51,6 @@ const expandListVariants: Variants = {
 const MenuListDesktop = styled(motion.ul)`
   display: flex;
   flex-direction: row;
-  transform: scaleX(1);
   width: 100%;
   height: 100%;
   align-items: center;
@@ -58,7 +58,7 @@ const MenuListDesktop = styled(motion.ul)`
   margin: 0;
 `
 
-const MenuListMobile = styled(MenuListDesktop).attrs({ variants: expandListVariants })`
+const MenuListMobile = styled(MenuListDesktop as any).attrs({ variants: expandListVariants })`
   @media ${media.tablet} {
     background: ${({ theme }) => theme.colors.lightText};
     justify-content: center;
@@ -82,38 +82,33 @@ const expandItemVariants = {
   }
 }
 
-const MenuItem = styled(motion.li).attrs({ variants: expandItemVariants })`
-  list-style: none;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 15px;
-`;
-
-const MenuLink = styled(StyledLink)`
+const MenuLink = styled(StyledLink as any)`
   position: relative;
   display: flex;
   width: 200px;
+  height: 100%;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.lightText};
-  transition: transform 150ms ease-out;
+  font-family: 'Playfair Display',serif;
+  padding: 8px 15px;
   &:hover {
-    transform: scale(1.1)
+    color: ${({ theme }) => theme.colors.lightText};
+    &::after {
+      transform: scaleX(1);
+    }
   }
   &::after {
     content: '';
-    background: url(${MenuMark});
     position: absolute;
+    background: ${({ theme }) => theme.colors.darkText};
     z-index: -1;
     left: 0;
+    top: 0;
     width: 100%;
-    height: 45px;
-    top: -12px;
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transition: transform 300ms ease-in-out;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: 100% 100%;
+    transition: transform 200ms ease-out;
+
     @media ${media.tablet} {
       width: 600px;
       top: -30px;
@@ -137,6 +132,17 @@ const MenuLink = styled(StyledLink)`
   }
 `;
 
+const MenuItem = styled(motion.li).attrs({ variants: expandItemVariants })<{ isCovered: boolean }>`
+  list-style: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+`
+
+const MotionLink = motion.custom(Link);
+
 const MenuListComponent: FC<{ isExpanded: boolean; width: number }> = ({ width, children, isExpanded }) => {
   return (<>
     {width < 1025
@@ -159,6 +165,11 @@ export const Menu: FC = () => {
   const [visible, setVisible] = useState(true);
   const [prevPos, setPrevPos] = useState({ x, y });
 
+  const { scrollY } = useViewportScroll()
+  const highlightScale = useTransform(scrollY, [0, 700, 1000], [0, 0.45, 1])
+  const logoScale = useTransform(scrollY, [0, 1000], ['85px', '45px'])
+  const colorAnim = useTransform(scrollY, [0, 700], [theme.colors.darkText, theme.colors.lightText])
+
   const location = useWindowLocation();
 
   const isBlogPost = useMemo(() => {
@@ -170,7 +181,11 @@ export const Menu: FC = () => {
   useDebounce(
     () => {
       setPrevPos(prevState => ({ ...prevState, y }));
-      prevPos.y < y && !isExpanded ? setVisible(false) : setVisible(true);
+      if (prevPos.y < y && !isExpanded) {
+        setVisible(false)
+      } else {
+        setVisible(false);
+      }
     },
     35,
     [x, y],
@@ -180,27 +195,28 @@ export const Menu: FC = () => {
     setIsExpanded(false)
   }
 
+  const isItemCovered = (highlightScale as any).current >= 0.45
 
   return (
     <MenuWrapper initial='visible' animate={visible || !isBlogPost ? 'visible' : 'hidden'}>
-      <Link to='/'>
+      <MotionLink to='/' style={{ height: logoScale }}>
         <LogoSigil />
-      </Link>
+      </MotionLink>
       <BurgerButton onClick={() => setIsExpanded((prev) => !prev)} isExpanded={isExpanded} />
       <MenuListComponent isExpanded={isExpanded} width={width}>
-        <MenuItem>	
-          <MenuLink to='/' onClick={handleMenuClick}>
-            Strona główna
+        <MenuItem isCovered={isItemCovered} >
+          <MenuLink to='/' onClick={handleMenuClick} style={{ transform: 'rotate(var(--rotate))'}}>
+            Homepage
           </MenuLink>
         </MenuItem>
-        <MenuItem>
+        <MenuItem isCovered={isItemCovered} style={{ color: colorAnim }}>
           <MenuLink to='/blog' onClick={handleMenuClick}>
             Blog
           </MenuLink>
         </MenuItem>
-        <MenuItem>
+        <MenuItem isCovered={isItemCovered} style={{ color: colorAnim }}>
           <MenuLink to='/contact' onClick={handleMenuClick}>
-            Kontakt
+            Contact
           </MenuLink>
         </MenuItem>
     </MenuListComponent>
