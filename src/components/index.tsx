@@ -13,3 +13,4 @@ export * from './Logo';
 export * from './BurgerButton';
 export * from './Hero';
 export * from './AboutMe';
+export * from './Menu'

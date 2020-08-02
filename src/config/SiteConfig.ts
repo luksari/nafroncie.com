@@ -7,7 +7,7 @@ export const config = {
   siteTitleAlt: 'Leafcode - Frontend, UI/UX, Lifestyle', // Alternative Site title for SEO
   siteUrl: 'https://leafcode.net', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
-  favicon: 'static/favicon.png', // Your image for favicons. You can find it in the /src folder
+  favicon: 'static/images/favicon.png', // Your image for favicons. You can find it in the /src folder
   siteDescription: 'Front-end, Software development, Work, Lifestyle', // Your site description
   author: 'Łukasz Tyszkiewicz - Leafcode',
   siteLogo: 'static/svgs/sigil.svg', 
@@ -24,7 +24,6 @@ export const config = {
   backgroundColor: '#2b2e3c',
 
   // Settings for typography.ts
-  baseFontSize: '18px',
   theme: kirkham,
 
   // Social media

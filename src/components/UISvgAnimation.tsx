@@ -41,17 +41,12 @@ export const UISvgAnimation = ({ className }: Props) => {
 
     anim.current = tl.fromTo(phone, { x: '-=300'}, { x: '+=300', duration: 1, autoAlpha: 1 })
       .fromTo(frame, { strokeDashoffset: frame.getTotalLength() }, { duration: 1, ease: Power2.easeOut,  strokeDashoffset: 300, autoAlpha: .3 })
-      .fromTo(logo, { y: '-=300' }, { y: '+=300', autoAlpha: 1 })
-      .fromTo(card1, { x: '-=300', }, { x: '+=300', autoAlpha: 1 }, 1.3)
-      .fromTo(card2, { x: '+=300', }, { x: '-=300', autoAlpha: 1 }, 1.3)
-      .fromTo(popup, { y: '+=300', },{ y: '-=300', autoAlpha: 1 })
+      .fromTo(logo, { y: '-=300' }, { y: 0, autoAlpha: 1 })
+      .fromTo(card1, { x: '-=300', }, { x: 0, autoAlpha: 1 }, 1.3)
+      .fromTo(card2, { x: '+=300', }, { x: 0, autoAlpha: 1 }, 1.3)
+      .fromTo(popup, { y: '+=300', },{ y: 0, autoAlpha: 1 })
       .fromTo(plant1,{ x: -3, },{ transformOrigin: '50% 50%',x: 3, scale: 1, yoyo: true, repeat: -1 }, .5)
       .fromTo(plant2, { x: 3, },{ transformOrigin: '50% 50%',x: -3, scale: 1, yoyo: true, repeat: -1 }, .5)
-      
-        
-  // return () => {
-  //   anim.current.kill();
-  // }
   
   }, []) 
 
