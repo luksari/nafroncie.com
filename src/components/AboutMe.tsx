@@ -113,24 +113,25 @@ export const AboutMe = () => {
           I have started learning web development <Bolden>two years ago</Bolden>,
           since then I spend almost <Bolden>every day</Bolden> improving my skills, 
           and learning new usable stuff, to create <Bolden>well produced</Bolden> web applications. 
-          After this period of time, I can tell that creating things became my <Bolden>passion</Bolden>.
+          After this period of time, I can tell that creating things became my passion.
         </MainParagraph>
       </ParagraphContainer>
       <ParagraphContainer reversed>
         <StyledSVG />
         <MainParagraph data-initiale='B'>
-          Besides coding, I also do like UI/UX concerns, animations stuff drives me crazy, 
-          these aspects of my creative soul, improves my details and micro-interactions awareness.
+          Besides coding, I also do like <Bolden>UI/UX</Bolden> concerns, <Bolden>animations</Bolden> stuff drives me crazy, 
+          these aspects of my creative soul, improves my <Bolden>details and micro-interactions</Bolden> awareness, which results in better products,
+          all of these leads to the client who will be happier than ever.
         </MainParagraph>
       </ParagraphContainer>
       <ParagraphContainer>
         <StyledImage fluid={image3.node.fluid}/>
         <MainParagraph data-initiale='I'>
-          I am also keen on traveling, meeting new people. 
-          I do like learning new languages,
-          for now I have chosen Spanish and Brasilian Portuguese to learn.
-          On daily basis I spend my free time on Yoga <Emoji label="Man doing yoga emoji">🧘‍♂️</Emoji>,
-          Cycling <Emoji label="Bicycle emoji">🚴</Emoji> and a little bit of gaming <Emoji label="Gamepad emoji">🎮</Emoji>
+          I am also keen on <Bolden>traveling</Bolden>, meeting new people. 
+          I do like learning foreign languages,
+          for now I have chosen <Bolden>Spanish</Bolden> and <Bolden>Brasilian Portuguese</Bolden>.
+          On daily basis I spend my free time doing <Bolden>gym, yoga, meditation</Bolden> and a little bit of gaming.
+          Sometimes I crawl through many creative events around Silesian area, to enjoy talks with people, <Bolden>cold craft beer</Bolden> and various types of <Bolden>pizza</Bolden>
         </MainParagraph>
       </ParagraphContainer>
     </AboutMeContent>
