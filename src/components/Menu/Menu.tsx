@@ -42,8 +42,8 @@ export const Menu: FC = () => {
   const [visible, setVisible] = useState(true);
   const [prevPos, setPrevPos] = useState({ x, y });
 
-  const { scrollY } = useViewportScroll()
-  const logoScale = useTransform(scrollY, [0, 1000], ['85px', '45px'])
+  const { scrollYProgress } = useViewportScroll()
+  const logoScale = useTransform(scrollYProgress, [0, .2], ['85px', '55px'])
 
   const location = useWindowLocation();
 
