@@ -64,9 +64,10 @@ interface Props {
 }
 
 export const MenuItem = ({ text, to, onClick }: Props) => {
-  const { scrollY } = useViewportScroll();
-  const scaleXAnim = useTransform(scrollY, [0, 700], [0, 1])
-  const colorAnim = useTransform(scrollY, [0, 700], [theme.colors.darkText, theme.colors.lightText])
+  const { scrollYProgress } = useViewportScroll();
+  const scaleXAnim = useTransform(scrollYProgress, [0, 100], [0, 1])
+  const colorAnim = useTransform(scrollYProgress, [0, 100], [theme.colors.darkText, theme.colors.lightText]);
+  console.log(scaleXAnim);
 
   return (
   <MenuItemWrapper whileHover={{ scale: 1.1 }}>
