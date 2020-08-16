@@ -66,7 +66,7 @@ export const PageTitleSecondary = styled.h2`
   margin-top: 15px;
   color: ${({ theme }) => theme.colors.darkText};
   @media ${media.tablet} {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
   }
   @media ${media.phone} {
     font-size: 1.5rem;

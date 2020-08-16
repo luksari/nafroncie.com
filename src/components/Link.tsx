@@ -1,11 +1,10 @@
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledLink = styled(Link)`
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.darkText};
+export const LinkUnderlineStyles = (color: string, colorHover: string) => css`
   transition: color 150ms ease-out;
   position: relative;
+  color: ${color};
   &::after {
     content: '';
     position: absolute;
@@ -16,16 +15,20 @@ export const StyledLink = styled(Link)`
     transform: scaleX(0);
     transform-origin: 0 0;
     transition: transform 150ms ease-out;
-    background: ${({ theme }) => theme.colors.darkText};
+    background: ${color}
   }
   &:hover {
-    color: ${({ theme }) => theme.colors.accentSecondary};
+    color: ${colorHover};
     &::after {
-      background: ${({ theme }) => theme.colors.accentSecondary};
+      background: ${colorHover};
       transform: scaleX(1);
     }
   }
+`
+
+export const StyledLink = styled(Link)`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.darkText};
+  ${({ theme }) => LinkUnderlineStyles(theme.colors.darkText, theme.colors.accentSecondary)};
 `;
 
-
-export default StyledLink;

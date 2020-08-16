@@ -5,7 +5,7 @@ import BackgroundImage from 'gatsby-background-image';
 import { kebabCase } from 'lodash';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { Header, Layout, PrevNext, SEO, StyledLink, Subline, PostTitle } from '../components';
+import { Header, Layout, PrevNext, SEO, StyledLink, Subline, PostTitle, LinkUnderlineStyles } from '../components';
 import { IPathContext } from '../models/PathContext';
 import { IPost } from '../models/Post';
 import { media } from '../utils/media';
@@ -22,8 +22,11 @@ const PostContent = styled.div`
   margin-bottom: 1rem;
   position: relative;
   box-shadow: 0px 15px 10px -15px ${({ theme }) => theme.colors.darkText};
+  a {
+    ${({ theme }) => LinkUnderlineStyles(theme.colors.accentSecondary, theme.colors.accent)};
+  }
 
-  @media ${media.laptop} {
+  @media ${media.laptopS} {
     width: 70%;
   }
   @media ${media.tablet} {

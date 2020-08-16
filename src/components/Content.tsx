@@ -17,12 +17,15 @@ export const Content = styled.section`
 `;
 
 export const PostsContent = styled.section`
-  padding: 0 20%;
+  padding: 0 15%;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
   z-index: 1;
   margin-top: -8rem;
+  @media ${media.laptopS} {
+    padding: 0 10%;
+  }
   @media ${media.tablet} {
     padding: 1rem 10%;
     margin-top: -3.5rem;

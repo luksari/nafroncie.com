@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { LogoImage } from './Logo';
 import { media } from '../utils/media';
 import { PageTitle, PageTitleSecondary } from './Title';
 import { motion } from 'framer-motion';
+import leaves from "@static/images/leaves.png"
+import dots from "@static/images/dots.png"
 
 const HeroWrapper = styled.div<{ main?: boolean }>`
   width: 100%;
@@ -15,12 +17,43 @@ const HeroWrapper = styled.div<{ main?: boolean }>`
   flex-wrap: wrap;
   flex-direction: column;
   min-height: ${({ main }) => main ? '100vh' : '70vh'};
-  @media ${media.tablet} {
-    min-height: ${({ main }) => main ? '100vh' : '60vh'};
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    background: url(${dots}) no-repeat;
+    left: 0;
+    top: 0;
+    width: 567px;
+    height: 574px;
+    transform: translate(-250px, -100px) rotateZ(-15deg) scale(1.4);
+    @media ${media.desktopS} {
+      transform: translate(-250px, -100px) rotateZ(-15deg) scale(1);
+    }
+  /** Before ends */
   }
-
-  @media ${media.tablet} {
-    height: 600px;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 873px;
+    height: 724px;
+    right: 0;
+    bottom: 0;
+    transform: translate(400px, 380px) rotateZ(-15deg) scale(1.75);
+    ${({ theme }) => css`
+      background: linear-gradient(195deg, transparent, transparent 35%, ${theme.colors.bgLight} 45%), url(${leaves}) no-repeat;
+    
+    @media ${media.desktopS} {
+      transform: translate(400px, 380px) rotateZ(-15deg) scale(1);
+    }
+    /** After ends */
+    `}
+    /** HeroWrapper class  */
+    @media ${media.tablet} {
+      height: 600px;
+      min-height: ${({ main }) => main ? '100vh' : '60vh'};
+    }
+    
   }
 `;
 
@@ -35,6 +68,9 @@ const TitleWrapper = styled(motion.div).attrs({
   grid-template-rows: auto auto;
   @media ${media.tablet} {
     align-items: center;
+    grid-column-gap: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 85px auto auto;
   }
 `;
 const ChildrenWrapper = styled.div`
@@ -49,6 +85,11 @@ const ChildrenWrapper = styled.div`
 const StyledLogo = styled(LogoImage)`
   grid-column: 1/1;
   grid-row: 1/1;
+  height: 100%;
+  @media ${media.tablet} {
+    margin-bottom: 25px;
+  }
+
 `
 
 const StyledMainTitle = styled(PageTitle)`
@@ -67,10 +108,18 @@ const StyledMainTitle = styled(PageTitle)`
     color: ${({ theme }) => theme.colors.lightText};
     padding: 0 25px;
   }
+  @media ${media.tablet} {
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
 `
 
 const StyledSecondaryTitle = styled(PageTitleSecondary)`
   grid-column: 2/2;
+  @media ${media.tablet} {
+    grid-column: 1/1;
+    grid-row: 3/3;
+  }
 `
 
 interface IProps {
