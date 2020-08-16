@@ -43,11 +43,13 @@ export const IndexPage: FC<IPageProps> = ({ data }) => {
                 key={post.node.id}
               />
             ))}
-        <SublineWrapper>
-          <Link to='/blog'>
-            <Button>All articles ( {totalCount} )</Button>
-          </Link>
-        </SublineWrapper>
+        {totalCount > config.HomepagePosts && (
+          <SublineWrapper>
+            <Link to='/blog'>
+              <Button>All articles ( {totalCount} )</Button>
+            </Link>
+          </SublineWrapper>
+        )}
       </PostsContent>
       <AboutMe />
     </Layout>

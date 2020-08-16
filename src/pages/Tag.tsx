@@ -21,7 +21,7 @@ export const TagTemplate: FunctionComponent<IPageProps> = ({ pathContext: { post
 
   return (
     <Layout>
-      <Helmet title={`${'Tagi'} | ${config.siteTitle}`} />
+      <Helmet title={`${tagName} | ${config.siteTitle}`} />
       <Hero title='Tags' subTitle={`#${tagName}`}>
         <>
           <Subline sectionTitle>{subline}</Subline>

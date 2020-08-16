@@ -1,11 +1,11 @@
 {
-  "name": "nafroncie.com",
+  "name": "leafcode.org",
   "description": "Na froncie landing page",
   "version": "1.0.0",
-  "author": "Łukasz Tyszkiewicz - Na Froncie - (nafroncie@gmail.com)",
+  "author": "Łukasz Tyszkiewicz - Leafcode - (leafcode@gmail.com)",
   "keywords": [
     "gatsby, typescript",
-    "blog"
+    "blog", "programming"
   ],
   "license": "MIT",
   "main": "n/a",

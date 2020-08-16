@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import React, { FC } from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { Article, Button, Layout, PostsContent, Subline } from '../components';
+import { Article, Button, Layout, PostsContent } from '../components';
 import { Hero } from '../components';
 import { IPageProps } from '../models/PageProps';
 import { IPost } from '../models/Post';
@@ -17,17 +17,17 @@ const StyledLink = styled(Link)`
 
 export const Category: FC<IPageProps> = ({ pathContext: { posts, categoryName } }) => {
   const totalCount = posts ? posts.length : 0;
-  const subline = getPostSubline({ totalCount, name: categoryName });
 
   return (
     <Layout>
       <Helmet title={`${categoryName} | ${config.siteTitle}`} />
       <Hero title={'Categories'} subTitle={`#${categoryName}`}>
         <>
-          <Subline sectionTitle>{subline}</Subline>
-          <Button>
-            <StyledLink to={'/categories'}>All categories</StyledLink>
-          </Button>
+          <StyledLink to={'/categories'}>
+            <Button>
+              All categories
+            </Button>
+          </StyledLink>
         </>
       </Hero>
       <PostsContent>
