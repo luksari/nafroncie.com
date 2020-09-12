@@ -76,14 +76,13 @@ const ParagraphContainer = styled.div<{ reversed?: boolean }>`
   flex-direction: ${({ reversed }) => reversed ? 'row-reverse' : 'row'};
   justify-content: flex-start;
   ${MainParagraph} {
-    margin-left: ${({ reversed }) => reversed ? '0' : '-2rem'};
-    margin-right: ${({ reversed }) => reversed ? '-2rem' : '0'};
+    margin-left: ${({ reversed }) => reversed ? '0' : '15px'};
   }
   ${StyledImage} {
     &::after {
-      ${({ reversed, }) => reversed 
+      ${({ reversed, theme }) => reversed 
       ? css`
-        background: linear-gradient(90deg, #FEF8EDee, #FEF8EDee, 50%, #FEF8ED00);
+        background: linear-gradient(90deg, ${theme.colors.bgLight}, #FEF8EDee, 50%, #FEF8ED00);
       ` 
       : css`
         background: linear-gradient(-90deg, #FEF8EDee, #FEF8EDee, 50%, #ffffff00);
@@ -129,7 +128,7 @@ export const AboutMe = () => {
         <MainParagraph data-initiale='I'>
           I am also keen on <Bolden>traveling</Bolden>, meeting new people. 
           I do like learning foreign languages,
-          for now I have chosen <Bolden>Spanish</Bolden> and <Bolden>Brasilian Portuguese</Bolden>.
+          for now I have chosen <Bolden>Spanish</Bolden> and <Bolden>Portuguese</Bolden>.
           On daily basis I spend my free time doing <Bolden>gym, yoga, meditation</Bolden> and a little bit of gaming.
           Sometimes I crawl through many creative events around Silesian area, to enjoy talks with people, <Bolden>cold craft beer</Bolden> and various types of <Bolden>pizza</Bolden>
         </MainParagraph>

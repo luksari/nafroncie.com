@@ -1,8 +1,6 @@
-import { config } from '@config/SiteConfig';
 import { graphql } from 'gatsby';
 import React, { FC } from 'react';
-import Helmet from 'react-helmet';
-import { Article, Layout, Pagination, PostsContent, Hero, SectionTitle } from '../components';
+import { Article, Layout, Pagination, PostsContent, SectionTitle } from '../components';
 import { IData } from '../models/Data';
 
 interface IProps {
@@ -17,12 +15,14 @@ export const BlogPage: FC<IProps> = ({ pageContext: { currentPage, totalPages },
   const { edges } = data.allMdx;
 
   return (
-    <Layout>
-      <Helmet title={`Blog | ${config.siteTitle}`} />
-      <Hero main />
+    <Layout
+      title='Blog'
+      subTitle='Frontend i wiele więcej'
+      main
+    >
       <PostsContent>
         <SectionTitle>
-          All articles
+          Wszystkie posty
         </SectionTitle>
         {edges.map((post, index) => {
           return (

@@ -1,20 +1,16 @@
 import { Link } from 'gatsby';
 import { kebabCase } from 'lodash';
-import React, { FunctionComponent } from 'react';
-import Helmet from 'react-helmet';
-import { AnimatedTitle, Content, Header, Layout, PageTitle } from '../components';
+import React, { FC } from 'react';
+import { AnimatedTitle, Content, Layout } from '@components/index';
+import { IPageProps } from '@models/PageProps';
 
-import { config } from '@config/SiteConfig';
-import { IPageProps } from '../models/PageProps';
-
-export const AllTagTemplate: FunctionComponent<IPageProps> = ({ pathContext: { tags } }) => (
+export const AllTagTemplate: FC<IPageProps> = ({ pathContext: { tags } }) => (
   <>
     {tags && (
-      <Layout>
-        <Helmet title={`Tags | ${config.siteTitle}`} />
-        <Header>
-          <PageTitle>Tags</PageTitle>
-        </Header>
+      <Layout 
+        title='Wszystkie tagi'
+        subTitle='Sprawdź wszystkie tagi postów'
+      >
         <Content>
           {tags.map((tag, index: number) => (
             <AnimatedTitle key={index} delay={index}>

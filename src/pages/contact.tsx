@@ -1,13 +1,12 @@
-import React, { FunctionComponent } from 'react';
-import Helmet from 'react-helmet';
-import { Layout, Hero } from '../components';
-import { config } from '@config/SiteConfig';
+import React, { FC } from 'react';
+import { Layout } from '@components/index';
 
-const ContactPage: FunctionComponent = () => (
-  <Layout>
-    <Helmet title={`Contact | ${config.siteTitle}`} />
-    <Hero title='Contact' subTitle={`Get in touch with me`}>
-    </Hero>
+const ContactPage: FC = () => (
+  <Layout
+    title='Kontakt'
+    subTitle='Potrzebujesz pomocy? Chcesz współpracować? Skontaktuj się ze mną'
+  >
+
   </Layout>
 );
 

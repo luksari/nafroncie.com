@@ -1,35 +1,15 @@
-import { config } from '@config/SiteConfig';
-import { Link } from 'gatsby';
-import React, { FC } from 'react';
-import Helmet from 'react-helmet';
-import styled from 'styled-components';
-import { Article, Button, Layout, PostsContent } from '../components';
-import { Hero } from '../components';
-import { IPageProps } from '../models/PageProps';
-import { IPost } from '../models/Post';
-import { getPostSubline } from '../utils/subline';
 
-const StyledLink = styled(Link)`
-  align-self: center;
-  color: ${({ theme }) => theme.colors.darkText};
-  display: block;
-`;
+import React, { FC } from 'react';
+import { Article, Layout, PostsContent } from '@components/index';
+import { IPageProps } from '@models/PageProps';
+import { IPost } from '@models/Post';
 
 export const Category: FC<IPageProps> = ({ pathContext: { posts, categoryName } }) => {
-  const totalCount = posts ? posts.length : 0;
-
   return (
-    <Layout>
-      <Helmet title={`${categoryName} | ${config.siteTitle}`} />
-      <Hero title={'Categories'} subTitle={`#${categoryName}`}>
-        <>
-          <StyledLink to={'/categories'}>
-            <Button>
-              All categories
-            </Button>
-          </StyledLink>
-        </>
-      </Hero>
+    <Layout
+      title={categoryName}
+      subTitle='Poza liśćmi'
+    >
       <PostsContent>
         {posts &&
           posts.map((post: IPost, index) => (

@@ -1,8 +1,7 @@
 import { graphql, Link } from 'gatsby';
 import React, { FC } from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { Article, Button, Layout, PostsContent, AboutMe, Hero, SectionTitle } from '../components';
+import { Article, Button, Layout, PostsContent, AboutMe, SectionTitle } from '../components';
 import { config } from '@config/SiteConfig';
 import { IPageProps } from '../models/PageProps';
 
@@ -21,12 +20,13 @@ export const IndexPage: FC<IPageProps> = ({ data }) => {
   const { edges, totalCount } = data.allMdx;
 
   return (
-    <Layout>
-      <Helmet title={`Homepage | ${config.siteTitle}`} />
-      <Hero main/>
+    <Layout
+      title='Homepage'
+      main
+    >
       <PostsContent>
         <SectionTitle>
-          Latest articles
+          Ostatnie wpisy
         </SectionTitle>
         {edges
             .slice(0, config.HomepagePosts)

@@ -2,9 +2,9 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { LogoImage } from './Logo';
-import { media } from '../utils/media';
+import { media } from '@utils/media';
 import { PageTitle, PageTitleSecondary } from './Title';
-import { motion } from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import leaves from "@static/images/leaves.png"
 import dots from "@static/images/dots.png"
 
@@ -18,51 +18,44 @@ const HeroWrapper = styled.div<{ main?: boolean }>`
   flex-direction: column;
   min-height: ${({ main }) => main ? '100vh' : '70vh'};
   overflow: hidden;
-  &::before {
-    content: '';
-    position: absolute;
-    background: url(${dots}) no-repeat;
-    left: 0;
-    top: 0;
-    width: 567px;
-    height: 574px;
-    transform: translate(-250px, -100px) rotateZ(-15deg) scale(1.4);
-    @media ${media.desktopS} {
-      transform: translate(-250px, -100px) rotateZ(-15deg) scale(1);
-    }
-  /** Before ends */
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    width: 873px;
-    height: 724px;
-    right: 0;
-    bottom: 0;
-    transform: translate(400px, 380px) rotateZ(-15deg) scale(1.75);
-    ${({ theme }) => css`
-      background: linear-gradient(195deg, transparent, transparent 35%, ${theme.colors.bgLight} 45%), url(${leaves}) no-repeat;
-    
-    @media ${media.desktopS} {
-      transform: translate(400px, 380px) rotateZ(-15deg) scale(1);
-    }
-    /** After ends */
-    `}
-    /** HeroWrapper class  */
-    @media ${media.tablet} {
-      height: 600px;
-      min-height: ${({ main }) => main ? '100vh' : '60vh'};
-    }
-    
+  /** HeroWrapper class  */
+  @media ${media.tablet} {
+    height: 600px;
+    min-height: ${({ main }) => main ? '100vh' : '60vh'};
   }
 `;
 
-const TitleWrapper = styled(motion.div).attrs({ 
-    whileHover: { y: '-15px', transition: { duration: 0.3, type: "tween" }},
-    whileTap: { rotateZ: '-8deg', scale: 1.1 }
-  })`
+const DotsImage = styled(motion.img)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 567px;
+  height: 574px;
+  transform: translate(-250px, -100px) rotateZ(-15deg) scale(1.4);
+  @media ${media.desktopS} {
+    transform: translate(-250px, -100px) rotateZ(-15deg) scale(1);
+  }
+`
+
+const LeavesFadedImage = styled(motion.div)`
+  position: absolute;
+  width: 873px;
+  height: 724px;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: translate(400px, 380px) rotateZ(-15deg);
+  ${({ theme }) => css`
+    background: linear-gradient(195deg, transparent, transparent 35%, ${theme.colors.bgLight} 45%), url(${leaves});
+  `
+  }
+  @media ${media.desktopS} {
+    transform: translate(400px, 380px) rotateZ(-15deg);
+  }
+`
+
+const TitleWrapper = styled(motion.div)`
   display: grid;
-  cursor: pointer;
   grid-template-columns: 150px auto;
   grid-column-gap: 15px;
   grid-template-rows: auto auto;
@@ -73,26 +66,20 @@ const TitleWrapper = styled(motion.div).attrs({
     grid-template-rows: 85px auto auto;
   }
 `;
-const ChildrenWrapper = styled.div`
-  z-index: 10;
-  margin-top: 1rem;
-  padding: 0.8rem 0.7rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
 
-const StyledLogo = styled(LogoImage)`
+const LogoWrapper = styled(motion.div)`
   grid-column: 1/1;
   grid-row: 1/1;
   height: 100%;
+  z-index: 10;
   @media ${media.tablet} {
     margin-bottom: 25px;
   }
-
 `
 
-const StyledMainTitle = styled(PageTitle)`
+const AnimatedTitle = motion.custom(PageTitle);
+
+const StyledMainTitle = styled(AnimatedTitle)`
   span {
     display: inline-block;
     border-bottom: 3px solid ${({ theme }) => theme.colors.darkText};
@@ -122,6 +109,8 @@ const StyledSecondaryTitle = styled(PageTitleSecondary)`
   }
 `
 
+const AnimatedSubtitle = motion.custom(StyledSecondaryTitle);
+
 interface IProps {
   title?: string;
   subTitle?: string;
@@ -130,33 +119,47 @@ interface IProps {
 
 export const Hero: FC<IProps> = ({
   title = 'leafcode',
-  subTitle = 'Boost your frontend',
-  children,
+  subTitle = 'Frontend, programowanie i kwiatki',
   main = false,
 }) => {
+
+  const { scrollY } = useViewportScroll()
+
+  const logoContainerMoveY = useTransform(scrollY, [0, 500], [0, 300]);
+  const logoContainerScale = useTransform(scrollY, [0, 500], [1, 0.75]);
+  const logoContainerBlur = useTransform(scrollY, [0, 500], ['blur(0)', 'blur(4px)']);
+  const leavesScale = useTransform(scrollY, [0, 450], [1, 1.45]);
+  const dotsMoveY = useTransform(scrollY, [0, 450], [-100, 350]);
+  const dotsScale = useTransform(scrollY, [0, 450], [1, 1.25]);
+
   return (
-    <HeroWrapper main={main}>
-      <TitleWrapper>
-        <StyledLogo />
+    <HeroWrapper 
+      main={main}
+    >
+      <DotsImage src={dots} style={{ y: dotsMoveY, x: -250 , scale: dotsScale, rotateZ: -15 }} />
+      <LeavesFadedImage role='img' style={{ scale: leavesScale, x: 400, y: 380, rotateZ: -15}}/>
+      <TitleWrapper style={{ y: logoContainerMoveY, scale: logoContainerScale, filter: logoContainerBlur }}>
+        <LogoWrapper>
+          <LogoImage />
+        </LogoWrapper>
         {main 
           ? (
+            /** It is also AnimatedTitle due to composition */
             <StyledMainTitle>
               <span>leaf</span>
               <span>code</span>
             </StyledMainTitle>
           )
           : (
-            <PageTitle>
-             {title}
-            </PageTitle>
+            <AnimatedTitle>
+            {title}
+            </AnimatedTitle>
           )
-     
-      } 
-        <StyledSecondaryTitle>
+        }
+        <AnimatedSubtitle>
           {subTitle}
-        </StyledSecondaryTitle>
+        </AnimatedSubtitle>
       </TitleWrapper>
-      {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
     </HeroWrapper>
   )
 };

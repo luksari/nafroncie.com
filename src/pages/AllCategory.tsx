@@ -1,17 +1,16 @@
 import { Link } from 'gatsby';
 import { kebabCase } from 'lodash';
-import React, { FunctionComponent } from 'react';
-import Helmet from 'react-helmet';
-import { AnimatedTitle, Content, Layout, Hero } from '../components';
-import { config } from '@config/SiteConfig';
-import { IPageProps } from '../models/PageProps';
+import React, { FC } from 'react';
+import { AnimatedTitle, Content, Layout } from '@components/index';
+import { IPageProps } from '@models/PageProps';
 
-export const AllCategoryTemplate: FunctionComponent<IPageProps> = ({ pathContext: { categories } }) => (
+export const AllCategoryTemplate: FC<IPageProps> = ({ pathContext: { categories } }) => (
   <>
     {categories && (
-      <Layout>
-        <Helmet title={`Categories | ${config.siteTitle}`} />
-        <Hero title='Categories' subTitle='Check out all of them' />
+      <Layout
+        title='Wszystkie kategorie'
+        subTitle='Sprawdź wszystkie kategorie postów'
+      >
         <Content>
           {categories.map((category, index: number) => (
             <AnimatedTitle delay={index} key={index}>
