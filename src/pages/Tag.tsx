@@ -6,8 +6,8 @@ export const TagTemplate: FunctionComponent<IPageProps> = ({ pathContext: { post
 
   return (
     <Layout
-      title={tagName}
-      subTitle='Wszystkie tagi'
+      title='Tagi'
+      subTitle={`#${tagName}`}
     >
       <PostsContent>
         {posts &&

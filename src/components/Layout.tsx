@@ -120,7 +120,7 @@ export const Layout: FC<Props> = ({
         <Menu />
         <Wrapper fullWidth>{children}</Wrapper>
         <Footer>
-          &copy; {split(data.site.buildTime, '.')[2]} Leafcode - Łukasz Tyszkiewicz.<br />
+          &copy; {split(data.site.buildTime, '.')[2]} Leafcode - Łukasz Tyszkiewicz<br />
           <span>Ostatnia zmiana: {data.site.buildTime}</span>
         </Footer>
       </PageWrapper>

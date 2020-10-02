@@ -16,8 +16,6 @@ export const BlogPage: FC<IProps> = ({ pageContext: { currentPage, totalPages },
 
   return (
     <Layout
-      title='Blog'
-      subTitle='Frontend i wiele więcej'
       main
     >
       <PostsContent>

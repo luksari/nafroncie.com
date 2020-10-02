@@ -9,7 +9,7 @@ export const AllCategoryTemplate: FC<IPageProps> = ({ pathContext: { categories 
     {categories && (
       <Layout
         title='Wszystkie kategorie'
-        subTitle='Sprawdź wszystkie kategorie postów'
+        subTitle='Znajdź interesujące Cię posty w poniższych kategoriach'
       >
         <Content>
           {categories.map((category, index: number) => (

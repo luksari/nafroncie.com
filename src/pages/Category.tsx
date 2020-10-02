@@ -7,8 +7,8 @@ import { IPost } from '@models/Post';
 export const Category: FC<IPageProps> = ({ pathContext: { posts, categoryName } }) => {
   return (
     <Layout
-      title={categoryName}
-      subTitle='Poza liśćmi'
+      title='Kategorie'
+      subTitle={categoryName}
     >
       <PostsContent>
         {posts &&

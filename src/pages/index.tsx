@@ -21,7 +21,7 @@ export const IndexPage: FC<IPageProps> = ({ data }) => {
 
   return (
     <Layout
-      title='Homepage'
+      title='Strona główna'
       main
     >
       <PostsContent>
