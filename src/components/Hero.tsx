@@ -17,12 +17,11 @@ const HeroWrapper = styled.div<{ main?: boolean }>`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  min-height: ${({ main }) => main ? '100vh' : '70vh'};
+  min-height: 100vh;
   overflow: hidden;
   /** HeroWrapper class  */
   @media ${media.tablet} {
     height: 600px;
-    min-height: ${({ main }) => main ? '100vh' : '60vh'};
   }
 `;
 
@@ -31,7 +30,6 @@ const DotsImage = styled(motion.img)`
   left: 0;
   top: 0;
   width: 567px;
-  height: 574px;
   transform: translate(-250px, -100px) rotateZ(-15deg) scale(1.4);
   @media ${media.desktopS} {
     transform: translate(-250px, -100px) rotateZ(-15deg) scale(1);
@@ -106,6 +104,8 @@ const StyledSecondaryTitle = styled(PageTitleSecondary)`
   @media ${media.tablet} {
     grid-column: 1/1;
     grid-row: 3/3;
+    margin-top: .5rem;
+    text-align: center;
   }
 `
 
@@ -123,25 +123,21 @@ export const Hero: FC<IProps> = ({
   main = false,
 }) => {
   const { width } = useWindowSize();
-  const isDesktop = width && width > sizes.laptopS;
+  const isDesktop = width && width > sizes.tablet;
   const { scrollY } = useViewportScroll()
 
   const logoContainerMoveY = useTransform(scrollY, [0, 500], [0, isDesktop ? 300 : 150]);
-  const logoContainerScale = useTransform(scrollY, [0, 500], [1, isDesktop ? 0.75 : 0.95]);
-  const logoContainerBlur = useTransform(scrollY, [0, 500], ['blur(0)', 'blur(4px)']);
-  const leavesScale = useTransform(scrollY, [0, 450], [isDesktop ? 0.5 : 0.3, isDesktop ? 0.7 : 0.5]);
-  const dotsMoveY = useTransform(scrollY, [0, 450], [-100, 350]);
+  const logoContainerScale = useTransform(scrollY, [0, 500], [1, isDesktop ? 0.75 : 0.85]);
+  const logoContainerBlur = useTransform(scrollY, [0, isDesktop ? 500 : 750], ['blur(0)', 'blur(4px)']);
+  const leavesScale = useTransform(scrollY, [0, 450], [isDesktop ? 0.5 : 0.3, isDesktop ? 0.7 : 0.4]);
+  const dotsMoveY = useTransform(scrollY, [0, 450], [-100, isDesktop ? 350 : 200]);
   const dotsMoveX = useTransform(scrollY, [0, 450], [-250, -200]);
   const dotsScale = useTransform(scrollY, [0, 450], [1, 1.25]);
 
-  const dotsImageStyleDesktop = { y: dotsMoveY, x:dotsMoveX, scale: dotsScale, rotateZ: -15 };
-  const dotsImageStyleMobile = { y: -100, x:-250, scale: 1, rotateZ: -15 };
-  const dotsImageStyle = isDesktop ? dotsImageStyleDesktop : dotsImageStyleMobile;
+  const dotsImageStyle = { y: dotsMoveY, x:dotsMoveX, scale: dotsScale, rotateZ: -15 };
 
   return (
-    <HeroWrapper 
-      main={main}
-    >
+    <HeroWrapper>
       <DotsImage src={dots} style={dotsImageStyle} />
       <LeavesFadedImage role='img' style={{ scale: leavesScale, x: isDesktop ? 700 : 1100, y: 420, rotateZ: 0}}/>
       <TitleWrapper style={{ y: logoContainerMoveY, scale: logoContainerScale, filter: logoContainerBlur }}>

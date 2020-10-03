@@ -5,15 +5,15 @@ import { BurgerButton } from '..';
 import { media } from '../../utils/media';
 import { LogoSigil } from '../Logo';
 import { Link } from 'gatsby';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useWindowLocation } from '@utils/useWindowLocation';
 import { useViewportScroll, useTransform } from 'framer-motion';
 import { MenuListComponent } from './GenericMenuList';
 import { MenuItem } from './MenuItem';
 
-const visibilityVariants = {
+const visibilityVariants: Variants = {
   visible: { y: 0 },
-  hidden: { y: '-100%' }
+  hidden: { y: '-100%', transition: { type: 'tween', duration: .150} }
 }
 
 
@@ -59,10 +59,10 @@ export const Menu: FC = () => {
       if (prevPos.y < y && !isExpanded) {
         setVisible(false)
       } else {
-        setVisible(false);
+        setVisible(true);
       }
     },
-    35,
+    25,
     [x, y],
   );
 
@@ -79,7 +79,6 @@ export const Menu: FC = () => {
       <MenuListComponent isExpanded={isExpanded} width={width}>
         <MenuItem onClick={handleMenuClick} text='Homepage' to='/' />
         <MenuItem onClick={handleMenuClick} text='Blog' to='/blog' />
-        <MenuItem onClick={handleMenuClick} text='Contact' to='/contact' />
     </MenuListComponent>
   </MenuWrapper>
   );

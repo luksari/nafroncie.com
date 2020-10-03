@@ -86,7 +86,7 @@ interface IProps {
 }
 export const PostPage: FC<IProps> = ({ pathContext: { prev, next }, data: { mdx: post } }) => {
   return (
-    <Layout>
+    <Layout noHero>
       {post && (
         <>
           <SEO postPath={post.fields.slug} postNode={post} postSEO />

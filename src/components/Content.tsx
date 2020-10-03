@@ -39,4 +39,5 @@ export const PostsContent = styled.section`
 
 export const AboutMeContent = styled(Content)`
   padding: 3rem 20%;
+
 `;

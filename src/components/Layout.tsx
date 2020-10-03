@@ -82,6 +82,7 @@ interface Props {
   title?: string;
   subTitle?: string;
   main?: boolean;
+  noHero?: boolean;
 }
 
 const buildQuery = graphql`
@@ -96,27 +97,19 @@ export const Layout: FC<Props> = ({
   children,
   title = 'Leafcode',
   subTitle = 'Frontend, UI/UX i wiele więcej',
-  main = false
+  noHero = false,
 }) => {
   const data = useStaticQuery(buildQuery)
-  // const x = useMotionValue(0);
-  // const y = useMotionValue(0);
-  
-  // function handleMouseMove(event) {
-  //   x.set(event.pageX);
-  //   y.set(event.pageY);
-  // }
   
   return (
     <ThemeProvider theme={theme}>
       <Helmet title={`${title} | ${config.siteTitle}`} />
       <GlobalStyle />
       <PageWrapper>
-        <Hero 
-          main={main}
+        {!noHero && <Hero 
           title={title}
           subTitle={subTitle}
-        />
+        />}
         <Menu />
         <Wrapper fullWidth>{children}</Wrapper>
         <Footer>

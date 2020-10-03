@@ -4,9 +4,9 @@ import { SectionTitle } from './Title'
 import { graphql, useStaticQuery } from 'gatsby'
 import styled, { css } from 'styled-components'
 import GatsbyImage from 'gatsby-image'
-import { Emoji } from './Emoji'
 import { getImageByName } from '@utils/getImageByName'
 import { UISvgAnimation } from './UISvgAnimation'
+import { media } from '@utils/media'
 
 const PicturesQuery = graphql`
     query PicturesQuery {
@@ -61,11 +61,19 @@ const StyledImage = styled(GatsbyImage)`
     width: 100%;
     height: 100%;
   }
+  @media ${media.tablet} {
+    max-height: 300px;
+    border-radius: 16px;
+  }
 `
 
 const StyledSVG = styled(UISvgAnimation)`
   max-width: 250px;
   position: relative;
+  @media ${media.tablet} {
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
 `
 
 const ParagraphContainer = styled.div<{ reversed?: boolean }>`
@@ -89,6 +97,29 @@ const ParagraphContainer = styled.div<{ reversed?: boolean }>`
       ` 
       }
     }
+  }
+  @media ${media.tablet} {
+    max-height: 100%;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    ${MainParagraph} {
+      width: 100%;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0;
+      &::after {
+        display: none;
+      }
+    }
+    ${StyledImage} {
+      margin-left: 0;
+      margin-bottom: 10px;
+      &::after {
+        background: none;
+      }
+    }
+
   }
 `
 
@@ -128,9 +159,9 @@ export const AboutMe = () => {
         <MainParagraph data-initiale='I'>
           I am also keen on <Bolden>traveling</Bolden>, meeting new people. 
           I do like learning foreign languages,
-          for now I have chosen <Bolden>Spanish</Bolden> and <Bolden>Portuguese</Bolden>.
+          for now I have chosen <Bolden>Spanish</Bolden> and <Bolden>Brazilian Portuguese</Bolden>.
           On daily basis I spend my free time doing <Bolden>gym, yoga, meditation</Bolden> and a little bit of gaming.
-          Sometimes I crawl through many creative events around Silesian area, to enjoy talks with people, <Bolden>cold craft beer</Bolden> and various types of <Bolden>pizza</Bolden>
+          Sometimes I crawl through many creative events around Silesian area, to enjoy talks with people, <Bolden>cold craft beer</Bolden> and to share <Bolden>the frontend knowledge.</Bolden>
         </MainParagraph>
       </ParagraphContainer>
     </AboutMeContent>

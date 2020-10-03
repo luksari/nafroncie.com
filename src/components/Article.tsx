@@ -31,12 +31,16 @@ const Post = styled(motion.article)<{ readonly primary?: boolean }>`
   }
   @media ${media.phone} {
     grid-template-rows: 300px 1fr;
+    overflow: visible;
   }
 `;
 
 
 const ContentWrapper = styled.div`
   padding: 25px;
+  @media ${media.phone} {
+    padding: 10px 0;
+  }
 `;
 
 const Title = styled.h2<{ readonly primary?: boolean }>`
@@ -49,6 +53,7 @@ const Title = styled.h2<{ readonly primary?: boolean }>`
   }
   @media ${media.phone} {
     font-size: 1rem;
+    margin-bottom: 0.45rem;
   }
 `;
 
@@ -62,8 +67,11 @@ const Initiale = styled.span`
 `;
 
 const Excerpt = styled.p`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+  @media ${media.phone} {
+    margin: 0;
+    margin-top: 0.5rem;
+  }
 `;
 
 interface IProps {

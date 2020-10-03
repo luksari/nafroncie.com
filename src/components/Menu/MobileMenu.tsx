@@ -2,14 +2,16 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { motion, Variants } from "framer-motion";
 import { media } from "@utils/media";
-import { useLockBodyScroll } from "react-use";
 import { useLockHTMLScroll } from "@utils/useLockHTMLScroll";
 
 const expandListVariants: Variants = {
   expanded: { 
-    x: 0,  
+    x: 0,
     transition: {
-      staggerChildren: 0.07,
+      type: 'tween',
+      duration: .2,
+      staggerChildren: 0.12,
+      delayChildren: 0.15
     }, 
   },
   closed: {

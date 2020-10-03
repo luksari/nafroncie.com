@@ -44,12 +44,13 @@ export const PageTitle = styled.h1`
   margin-bottom: 0;
   z-index: 1;
   color: ${({ theme }) => theme.colors.darkText};
-  text-align: left;
+  text-align: start;
   @media ${media.tablet} {
     font-size: 4.2rem;
   }
   @media ${media.phone} {
     font-size: 3.3rem;
+    text-align: center;
   }
 `;
 

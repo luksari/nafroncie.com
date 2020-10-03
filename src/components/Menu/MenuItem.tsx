@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
-import { media } from "@utils/media";
+import { media, sizes } from "@utils/media";
 import React from 'react'
 import { theme } from "@config/Theme";
 import { Link } from "gatsby";
+import { useWindowSize } from "@utils/useWindowSize";
 
 const expandItemVariants = {
   expanded: { 
@@ -29,6 +30,9 @@ const MenuLink = styled(MotionLink)`
     font-size: 3rem;
     width: 600px;
     padding: 15px 15px;
+    &:hover {
+      color: ${({ theme }) => theme.colors.darkText};
+    }
   }
   @media ${media.phone} {
     font-size: 2.5rem;
@@ -65,14 +69,16 @@ interface Props {
 
 export const MenuItem = ({ text, to, onClick }: Props) => {
   const { scrollYProgress } = useViewportScroll();
+  const { width } = useWindowSize();
+  const isDesktop = width && width > sizes.laptopS;
   const scaleXAnim = useTransform(scrollYProgress, [0, .2], [0, 1])
   const colorAnim = useTransform(scrollYProgress, [0, .2], [theme.colors.darkText, theme.colors.lightText]);
 
   return (
   <MenuItemWrapper whileHover={{ scale: 1.1 }}>
-    <MenuLink to={to} onClick={onClick} style={{ color: colorAnim as any }}>
+    <MenuLink to={to} onClick={onClick} style={{ color: isDesktop && colorAnim as any}}>
       {text}
-     <MenuItemHiglight style={{ scaleX: scaleXAnim }} />
+     {isDesktop && <MenuItemHiglight style={{ scaleX: scaleXAnim }} />}
     </MenuLink>
   </MenuItemWrapper>)
 }
