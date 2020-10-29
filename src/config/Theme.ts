@@ -19,9 +19,12 @@ const colors = {
 };
 
 const gradients = {
-  primary: (angle: number) => `linear-gradient(${angle}deg, ${colors.primary}, ${colors.secondary})`,
-  accent: (angle: number) => `linear-gradient(${angle}deg, ${colors.accent}, ${colors.accentSecondary})`,
-  warning: (angle: number) => `linear-gradient(${angle}deg, ${colors.warning}, ${colors.error})`,
+  primary: (angle: number) =>
+    `linear-gradient(${angle}deg, ${colors.primary}, ${colors.secondary})`,
+  accent: (angle: number) =>
+    `linear-gradient(${angle}deg, ${colors.accent}, ${colors.accentSecondary})`,
+  warning: (angle: number) =>
+    `linear-gradient(${angle}deg, ${colors.warning}, ${colors.error})`,
 };
 
 const transitions = {
@@ -40,7 +43,7 @@ export const theme = {
   colors,
   transitions,
   fontSize,
-  gradients
+  gradients,
 };
 
 export type ThemeInterface = typeof theme;

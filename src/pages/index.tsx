@@ -1,7 +1,14 @@
 import { graphql, Link } from 'gatsby';
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Article, Button, Layout, PostsContent, AboutMe, SectionTitle } from '../components';
+import {
+  Article,
+  Button,
+  Layout,
+  PostsContent,
+  AboutMe,
+  SectionTitle,
+} from '../components';
 import { config } from '@config/SiteConfig';
 import { IPageProps } from '../models/PageProps';
 
@@ -12,40 +19,32 @@ const SublineWrapper = styled.div`
   justify-content: center;
   padding: 15px;
   position: relative;
-  background: ${({ theme}) => theme.colors.bgLight};
-
+  background: ${({ theme }) => theme.colors.bgLight};
 `;
 
 export const IndexPage: FC<IPageProps> = ({ data }) => {
   const { edges, totalCount } = data.allMdx;
 
   return (
-    <Layout
-      title='Strona główna'
-      main
-    >
+    <Layout main={true}>
       <PostsContent>
-        <SectionTitle>
-          Ostatnie wpisy
-        </SectionTitle>
-        {edges
-            .slice(0, config.HomepagePosts)
-            .map((post, index) => (
-              <Article
-                banner={post.node.frontmatter.banner.childImageSharp.fluid}
-                primary={index % 4 === 0}
-                title={post.node.frontmatter.title}
-                date={post.node.frontmatter.date}
-                excerpt={post.node.excerpt}
-                timeToRead={post.node.frontmatter.timeToRead}
-                slug={post.node.fields.slug}
-                category={post.node.frontmatter.category}
-                key={post.node.id}
-              />
-            ))}
+        <SectionTitle>Ostatnie wpisy</SectionTitle>
+        {edges.slice(0, config.HomepagePosts).map((post, index) => (
+          <Article
+            banner={post.node.frontmatter.banner.childImageSharp.fluid}
+            primary={index % 4 === 0}
+            title={post.node.frontmatter.title}
+            date={post.node.frontmatter.date}
+            excerpt={post.node.excerpt}
+            timeToRead={post.node.frontmatter.timeToRead}
+            slug={post.node.fields.slug}
+            category={post.node.frontmatter.category}
+            key={post.node.id}
+          />
+        ))}
         {totalCount > config.HomepagePosts && (
           <SublineWrapper>
-            <Link to='/blog'>
+            <Link to="/blog">
               <Button>All articles ( {totalCount} )</Button>
             </Link>
           </SublineWrapper>

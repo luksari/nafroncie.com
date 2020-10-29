@@ -8,7 +8,8 @@ export const Button = styled.button<{ big?: boolean }>`
   display: inline-flex;
   align-items: center;
   border-radius: ${({ big }) => (big ? '1.5rem' : '1rem')};
-  font-size: ${({ big, theme }) => (big ? theme.fontSize.medium : theme.fontSize.small)};
+  font-size: ${({ big, theme }) =>
+    big ? theme.fontSize.medium : theme.fontSize.small};
   color: ${({ theme }) => theme.colors.lightText};
   font-weight: 700;
   padding: ${(props) => (props.big ? '0.35rem 1.6rem' : '0.25rem 1.5rem')};

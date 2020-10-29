@@ -5,8 +5,8 @@ import { LogoImage } from './Logo';
 import { media, sizes } from '@utils/media';
 import { PageTitle, PageTitleSecondary } from './Title';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
-import leaves from "@static/images/leaves.png"
-import dots from "@static/images/dots.png"
+import leaves from '@static/images/leaves.png';
+import dots from '@static/images/dots.png';
 import { useWindowSize } from '@utils/useWindowSize';
 
 const HeroWrapper = styled.div<{ main?: boolean }>`
@@ -34,7 +34,7 @@ const DotsImage = styled(motion.img)`
   @media ${media.desktopS} {
     transform: translate(-250px, -100px) rotateZ(-15deg) scale(1);
   }
-`
+`;
 
 const LeavesFadedImage = styled(motion.div)`
   position: absolute;
@@ -45,10 +45,15 @@ const LeavesFadedImage = styled(motion.div)`
   z-index: 1;
 
   ${({ theme }) => css`
-    background: linear-gradient(180deg, transparent, transparent 30%, ${theme.colors.bgLight} 60%), url(${leaves});
-  `
-  }
-`
+    background: linear-gradient(
+        180deg,
+        transparent,
+        transparent 30%,
+        ${theme.colors.bgLight} 60%
+      ),
+      url(${leaves});
+  `}
+`;
 
 const TitleWrapper = styled(motion.div)`
   display: grid;
@@ -73,7 +78,7 @@ const LogoWrapper = styled(motion.div)`
   @media ${media.tablet} {
     margin-bottom: 25px;
   }
-`
+`;
 
 const AnimatedTitle = motion.custom(PageTitle);
 
@@ -97,17 +102,17 @@ const StyledMainTitle = styled(AnimatedTitle)`
     display: flex;
     justify-content: center;
   }
-`
+`;
 
 const StyledSecondaryTitle = styled(PageTitleSecondary)`
   grid-column: 2/2;
   @media ${media.tablet} {
     grid-column: 1/1;
     grid-row: 3/3;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     text-align: center;
   }
-`
+`;
 
 const AnimatedSubtitle = motion.custom(StyledSecondaryTitle);
 
@@ -120,48 +125,80 @@ interface IProps {
 export const Hero: FC<IProps> = ({
   title = 'Leafcode',
   subTitle = 'Frontend, UI/UX i wiele więcej',
-  main = false,
+  main,
 }) => {
   const { width } = useWindowSize();
   const isDesktop = width && width > sizes.tablet;
-  const { scrollY } = useViewportScroll()
+  const { scrollY } = useViewportScroll();
 
-  const logoContainerMoveY = useTransform(scrollY, [0, 500], [0, isDesktop ? 300 : 150]);
-  const logoContainerScale = useTransform(scrollY, [0, 500], [1, isDesktop ? 0.75 : 0.85]);
-  const logoContainerBlur = useTransform(scrollY, [0, isDesktop ? 500 : 750], ['blur(0)', 'blur(4px)']);
-  const leavesScale = useTransform(scrollY, [0, 450], [isDesktop ? 0.5 : 0.3, isDesktop ? 0.7 : 0.4]);
-  const dotsMoveY = useTransform(scrollY, [0, 450], [-100, isDesktop ? 350 : 200]);
+  const logoContainerMoveY = useTransform(
+    scrollY,
+    [0, 500],
+    [0, isDesktop ? 300 : 150],
+  );
+  const logoContainerScale = useTransform(
+    scrollY,
+    [0, 500],
+    [1, isDesktop ? 0.75 : 0.85],
+  );
+  const logoContainerBlur = useTransform(
+    scrollY,
+    [0, isDesktop ? 500 : 750],
+    ['blur(0)', 'blur(4px)'],
+  );
+  const leavesScale = useTransform(
+    scrollY,
+    [0, 450],
+    [isDesktop ? 0.5 : 0.3, isDesktop ? 0.7 : 0.4],
+  );
+  const dotsMoveY = useTransform(
+    scrollY,
+    [0, 450],
+    [-100, isDesktop ? 350 : 200],
+  );
   const dotsMoveX = useTransform(scrollY, [0, 450], [-250, -200]);
   const dotsScale = useTransform(scrollY, [0, 450], [1, 1.25]);
 
-  const dotsImageStyle = { y: dotsMoveY, x:dotsMoveX, scale: dotsScale, rotateZ: -15 };
+  const dotsImageStyle = {
+    y: dotsMoveY,
+    x: dotsMoveX,
+    scale: dotsScale,
+    rotateZ: -15,
+  };
 
   return (
     <HeroWrapper>
       <DotsImage src={dots} style={dotsImageStyle} />
-      <LeavesFadedImage role='img' style={{ scale: leavesScale, x: isDesktop ? 700 : 1100, y: 420, rotateZ: 0}}/>
-      <TitleWrapper style={{ y: logoContainerMoveY, scale: logoContainerScale, filter: logoContainerBlur }}>
+      <LeavesFadedImage
+        role="img"
+        style={{
+          scale: leavesScale,
+          x: isDesktop ? 700 : 1100,
+          y: 420,
+          rotateZ: 0,
+        }}
+      />
+      <TitleWrapper
+        style={{
+          y: logoContainerMoveY,
+          scale: logoContainerScale,
+          filter: logoContainerBlur,
+        }}
+      >
         <LogoWrapper>
           <LogoImage />
         </LogoWrapper>
-        {main 
-          ? (
-            /** It is also AnimatedTitle due to composition */
-            <StyledMainTitle>
-              <span>leaf</span>
-              <span>code</span>
-            </StyledMainTitle>
-          )
-          : (
-            <AnimatedTitle>
-            {title}
-            </AnimatedTitle>
-          )
-        }
-        <AnimatedSubtitle>
-          {subTitle}
-        </AnimatedSubtitle>
+        {main ? (
+          /** It is also AnimatedTitle due to composition */
+          <StyledMainTitle>
+            <span>leaf</span>
+            <span>code</span>
+          </StyledMainTitle>
+        ) : (
+          <AnimatedTitle>{title}</AnimatedTitle>
+        )}
+        <AnimatedSubtitle>{subTitle}</AnimatedSubtitle>
       </TitleWrapper>
     </HeroWrapper>
-  )
+  );
 };

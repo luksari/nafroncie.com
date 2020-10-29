@@ -2,13 +2,11 @@ import React, { FunctionComponent } from 'react';
 import { Article, Layout, PostsContent } from '@components/index';
 import { IPageProps } from '@models/PageProps';
 
-export const TagTemplate: FunctionComponent<IPageProps> = ({ pathContext: { posts, tagName } }) => {
-
+export const TagTemplate: FunctionComponent<IPageProps> = ({
+  pathContext: { posts, tagName },
+}) => {
   return (
-    <Layout
-      title='Tagi'
-      subTitle={`#${tagName}`}
-    >
+    <Layout title="Tagi" subTitle={`#${tagName}`}>
       <PostsContent>
         {posts &&
           posts.map((post, index) => (

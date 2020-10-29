@@ -1,15 +1,13 @@
-
 import React, { FC } from 'react';
 import { Article, Layout, PostsContent } from '@components/index';
 import { IPageProps } from '@models/PageProps';
 import { IPost } from '@models/Post';
 
-export const Category: FC<IPageProps> = ({ pathContext: { posts, categoryName } }) => {
+export const Category: FC<IPageProps> = ({
+  pathContext: { posts, categoryName },
+}) => {
   return (
-    <Layout
-      title='Kategorie'
-      subTitle={categoryName}
-    >
+    <Layout title="Kategorie" subTitle={categoryName}>
       <PostsContent>
         {posts &&
           posts.map((post: IPost, index) => (

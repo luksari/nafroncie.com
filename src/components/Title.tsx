@@ -55,8 +55,8 @@ export const PageTitle = styled.h1`
 `;
 
 export const PostTitle = styled(PageTitle)`
-    text-align: center;
-`
+  text-align: center;
+`;
 
 export const PageTitleSecondary = styled.h2`
   font-family: 'Fira sans', sans-serif;
@@ -78,7 +78,7 @@ export const SectionTitle = styled.h3`
   align-self: flex-start;
   justify-self: flex-start;
   margin-right: auto;
-  color: ${({  theme }) => theme.colors.darkText};
+  color: ${({ theme }) => theme.colors.darkText};
   margin-bottom: 35px;
   @media ${media.tablet} {
     font-size: 2rem;

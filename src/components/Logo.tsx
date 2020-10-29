@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import Sigil from '@static/svgs/sigil.svg'
+import Sigil from '@static/svgs/sigil.svg';
 
 const slideFromTop = keyframes`
   0% {
@@ -23,7 +23,6 @@ export const LogoImage = styled(Sigil)`
   opacity: 1;
   z-index: 1;
 `;
-
 
 export const LogoSigil = styled(Sigil)`
   animation: ${slideFromTop} 0.6s ease-in-out;

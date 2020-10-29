@@ -43,13 +43,17 @@ export const PrevNext: FC<IProps> = ({ prev, next }) => (
     {prev && (
       <Prev>
         <span>Poprzedni</span>
-        <Link to={`/blog/${kebabCase(prev.frontmatter.title)}`}>{prev.frontmatter.title}</Link>
+        <Link to={`/blog/${kebabCase(prev.frontmatter.title)}`}>
+          {prev.frontmatter.title}
+        </Link>
       </Prev>
     )}
     {next && (
       <Next>
         <span>Następny</span>
-        <Link to={`/blog/${kebabCase(next.frontmatter.title)}`}>{next.frontmatter.title}</Link>
+        <Link to={`/blog/${kebabCase(next.frontmatter.title)}`}>
+          {next.frontmatter.title}
+        </Link>
       </Next>
     )}
   </PrevNextWrapper>

@@ -1,4 +1,4 @@
-import kirkham from "typography-theme-kirkham";
+import kirkham from 'typography-theme-kirkham';
 
 export const config = {
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
@@ -10,7 +10,7 @@ export const config = {
   favicon: 'static/images/favicon.png', // Your image for favicons. You can find it in the /src folder
   siteDescription: 'Front-end, Software development, Work, Lifestyle', // Your site description
   author: 'Łukasz Tyszkiewicz - Leafcode',
-  siteLogo: 'static/svgs/sigil.svg', 
+  siteLogo: 'static/svgs/sigil.svg',
   siteBanner: 'static/images/banner.png',
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional

@@ -1,5 +1,6 @@
-import { find } from "lodash";
+import { find } from 'lodash';
 
-export const getImageByName = (data: any, name: string) => find(data.allImageSharp.edges, ({ node }) => {
-  return node.fluid.originalName.includes(name);
-})
+export const getImageByName = (data: any, name: string) =>
+  find(data.allImageSharp.edges, ({ node }) => {
+    return node.fluid.originalName.includes(name);
+  });

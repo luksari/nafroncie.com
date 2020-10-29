@@ -1,19 +1,21 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from 'react';
 
 // Hook
 export function useLockHTMLScroll(condition: boolean) {
   useLayoutEffect(() => {
-    const html = document.querySelector('html')
+    const html = document.querySelector('html');
     if (!html) {
       return;
     }
-   // Prevent scrolling on mount
-   if (condition) {
+    // Prevent scrolling on mount
+    if (condition) {
       html.style.overflow = 'hidden';
-   } else {
+    } else {
       html.style.overflow = 'auto';
-   }
-   // Re-enable scrolling when component unmounts
-   return () => { html.style.overflow = 'auto'; } 
-   }, [condition]);
+    }
+    // Re-enable scrolling when component unmounts
+    return () => {
+      html.style.overflow = 'auto';
+    };
+  }, [condition]);
 }

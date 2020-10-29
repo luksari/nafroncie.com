@@ -35,7 +35,6 @@ const Post = styled(motion.article)<{ readonly primary?: boolean }>`
   }
 `;
 
-
 const ContentWrapper = styled.div`
   padding: 25px;
   @media ${media.phone} {
@@ -85,7 +84,16 @@ interface IProps {
   readonly banner?: FluidObject;
 }
 
-export const Article: FunctionComponent<IProps> = ({ title, date, excerpt, slug, timeToRead, category, primary, banner }) => {
+export const Article: FunctionComponent<IProps> = ({
+  title,
+  date,
+  excerpt,
+  slug,
+  timeToRead,
+  category,
+  primary,
+  banner,
+}) => {
   const firstChar = title.charAt(0);
   const handleClick = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -93,7 +101,11 @@ export const Article: FunctionComponent<IProps> = ({ title, date, excerpt, slug,
   };
 
   return (
-    <Post primary={primary} onClick={handleClick} whileHover={{ y: -10, transition: { duration: 0.33 },  }}>
+    <Post
+      primary={primary}
+      onClick={handleClick}
+      whileHover={{ y: -10, transition: { duration: 0.33 } }}
+    >
       <Banner fluid={banner} />
       <ContentWrapper>
         <Title primary={primary}>
@@ -101,7 +113,8 @@ export const Article: FunctionComponent<IProps> = ({ title, date, excerpt, slug,
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Title>
         <Subline>
-          {moment(date, 'YYYY-MM-DD').format('DD.MM.YYYY')} &mdash; {timeToRead} min. czytania &mdash; w
+          {moment(date, 'YYYY-MM-DD').format('DD.MM.YYYY')} &mdash; {timeToRead}{' '}
+          min. czytania &mdash; w
           <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
         </Subline>
         <Excerpt>{excerpt}</Excerpt>

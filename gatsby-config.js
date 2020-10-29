@@ -17,10 +17,8 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-offline',
     'gatsby-plugin-typescript',
     'gatsby-plugin-manifest',
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-lodash',
     `gatsby-plugin-sharp`,
@@ -37,17 +35,24 @@ module.exports = {
       options: {
         name: 'post',
         path: `${__dirname}/blog`,
-
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: `${__dirname}/static/svgs`,
-          omitKeys: ['xmlnsDc', 'xmlnsCc', 'xmlnsRdf', 'xmlnsSvg', 'xmlnsSodipodi', 'xmlnsInkscape', 'xmlnsSerif'],
-        }
-      }
+          omitKeys: [
+            'xmlnsDc',
+            'xmlnsCc',
+            'xmlnsRdf',
+            'xmlnsSvg',
+            'xmlnsSodipodi',
+            'xmlnsInkscape',
+            'xmlnsSerif',
+          ],
+        },
+      },
     },
     {
       resolve: 'gatsby-plugin-typography',
@@ -69,6 +74,18 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-mdx',
       options: {
         decks: [],
@@ -87,5 +104,5 @@ module.exports = {
         ],
       },
     },
-  ]
+  ],
 };

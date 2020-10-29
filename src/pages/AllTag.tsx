@@ -7,9 +7,9 @@ import { IPageProps } from '@models/PageProps';
 export const AllTagTemplate: FC<IPageProps> = ({ pathContext: { tags } }) => (
   <>
     {tags && (
-      <Layout 
-        title='Wszystkie tagi'
-        subTitle='Nie pamiętasz treści? Nie ma sprawy, któryś z tagów pomoże Ci znaleźć to czego szukasz'
+      <Layout
+        title="Wszystkie tagi"
+        subTitle="Nie pamiętasz treści? Nie ma sprawy, któryś z tagów pomoże Ci znaleźć to czego szukasz"
       >
         <Content>
           {tags.map((tag, index: number) => (

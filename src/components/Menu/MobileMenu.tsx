@@ -1,29 +1,30 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import { motion, Variants } from "framer-motion";
-import { media } from "@utils/media";
-import { useLockHTMLScroll } from "@utils/useLockHTMLScroll";
+import React, { FC } from 'react';
+import styled from 'styled-components';
+import { motion, Variants } from 'framer-motion';
+import { media } from '@utils/media';
+import { useLockHTMLScroll } from '@utils/useLockHTMLScroll';
 
 const expandListVariants: Variants = {
-  expanded: { 
+  expanded: {
     x: 0,
     transition: {
       type: 'tween',
-      duration: .2,
+      duration: 0.2,
       staggerChildren: 0.12,
-      delayChildren: 0.15
-    }, 
+      delayChildren: 0.15,
+    },
   },
   closed: {
     x: '100%',
     transition: {
       staggerDirection: -1,
     },
-  }
-}
+  },
+};
 
-
-const MenuListMobile = styled(motion.div).attrs({ variants: expandListVariants })`
+const MenuListMobile = styled(motion.div).attrs({
+  variants: expandListVariants,
+})`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -48,12 +49,18 @@ const MenuListMobile = styled(motion.div).attrs({ variants: expandListVariants }
   }
 `;
 
-export const MobileMenu: FC<{ isExpanded: boolean }> = ({ children, isExpanded }) => {
+export const MobileMenu: FC<{ isExpanded: boolean }> = ({
+  children,
+  isExpanded,
+}) => {
   useLockHTMLScroll(isExpanded);
 
   return (
-    <MenuListMobile initial='closed' animate={isExpanded ? 'expanded' : 'closed'}>
+    <MenuListMobile
+      initial="closed"
+      animate={isExpanded ? 'expanded' : 'closed'}
+    >
       {children}
     </MenuListMobile>
-  )
-}
+  );
+};

@@ -5,8 +5,7 @@
     "jsx": "preserve",
     "lib": [
       "dom",
-      "es2015",
-      "es2017"
+      "esnext"
     ],
     "moduleResolution": "node",
     "baseUrl": ".",
@@ -41,6 +40,7 @@
     "preserveConstEnums": true,
     "noImplicitAny": false,
   },
+  "exclude": ["node_modules", "public", ".cache"],
   "include": [
     "./src/**/*"
   ]

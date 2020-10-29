@@ -1,6 +1,12 @@
 import { graphql } from 'gatsby';
 import React, { FC } from 'react';
-import { Article, Layout, Pagination, PostsContent, SectionTitle } from '../components';
+import {
+  Article,
+  Layout,
+  Pagination,
+  PostsContent,
+  SectionTitle,
+} from '../components';
 import { IData } from '../models/Data';
 
 interface IProps {
@@ -11,17 +17,16 @@ interface IProps {
   };
 }
 
-export const BlogPage: FC<IProps> = ({ pageContext: { currentPage, totalPages }, data }) => {
+export const BlogPage: FC<IProps> = ({
+  pageContext: { currentPage, totalPages },
+  data,
+}) => {
   const { edges } = data.allMdx;
 
   return (
-    <Layout
-      main
-    >
+    <Layout main>
       <PostsContent>
-        <SectionTitle>
-          Wszystkie posty
-        </SectionTitle>
+        <SectionTitle>Wszystkie posty</SectionTitle>
         {edges.map((post, index) => {
           return (
             <Article
@@ -35,9 +40,13 @@ export const BlogPage: FC<IProps> = ({ pageContext: { currentPage, totalPages },
               category={post.node.frontmatter.category}
               key={post.node.id}
             />
-          )
+          );
         })}
-        <Pagination currentPage={currentPage} totalPages={totalPages} url='blog' />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          url="blog"
+        />
       </PostsContent>
     </Layout>
   );
@@ -47,7 +56,11 @@ export default BlogPage;
 
 export const blogQuery = graphql`
   query($skip: Int!, $limit: Int!) {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       totalCount
       edges {
         node {
@@ -61,19 +74,19 @@ export const blogQuery = graphql`
             category
             timeToRead
             banner {
-                childImageSharp {
-                  fluid(maxWidth: 1920) {
-                    aspectRatio
-                    src
-                    srcSet
-                    sizes
-                    base64
-                    tracedSVG
-                    srcWebp
-                    srcSetWebp
-                  }
+              childImageSharp {
+                fluid(maxWidth: 1920) {
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                  base64
+                  tracedSVG
+                  srcWebp
+                  srcSetWebp
                 }
               }
+            }
           }
           excerpt(pruneLength: 255)
         }

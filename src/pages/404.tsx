@@ -1,11 +1,13 @@
+import { Link } from 'gatsby';
 import React, { FC } from 'react';
-import { Content, Header, Layout, PageTitle, Wrapper } from '../components';
+import { Content, Layout, Wrapper } from '../components';
 
 export const NotFoundPage: FC = () => (
   <Layout>
     <Wrapper>
       <Content>
-        <p>Hey, I think that something went wrong because you should not be here 🤔</p>
+        <p>Hmm, chyba nie powinno Cię tu być 🤔</p>
+        <Link to="/">Wróć do strony głównej</Link>
       </Content>
     </Wrapper>
   </Layout>

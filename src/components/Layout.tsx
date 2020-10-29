@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react';
-import styled, { createGlobalStyle, ThemeProvider }  from 'styled-components';
+import React, { FC } from 'react';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
 import { theme } from '@config/Theme';
 import { config } from '@config/SiteConfig';
@@ -9,7 +9,6 @@ import { media } from '@utils/media';
 import { Footer } from './Footer';
 import { Menu } from './Menu';
 import { Hero } from './Hero';
-import { useMotionValue } from 'framer-motion';
 
 const GlobalStyle = createGlobalStyle`
   ::selection {
@@ -54,7 +53,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
 export const Wrapper = styled.div<{ fullWidth?: boolean }>`
   display: flex;
   flex-direction: column;
@@ -93,32 +91,30 @@ const buildQuery = graphql`
   }
 `;
 
-export const Layout: FC<Props> = ({ 
+export const Layout: FC<Props> = ({
   children,
   title = 'Leafcode',
   subTitle = 'Frontend, UI/UX i wiele więcej',
   noHero = false,
+  main,
 }) => {
-  const data = useStaticQuery(buildQuery)
-  
+  const data = useStaticQuery(buildQuery);
+
   return (
     <ThemeProvider theme={theme}>
       <Helmet title={`${title} | ${config.siteTitle}`} />
       <GlobalStyle />
       <PageWrapper>
-        {!noHero && <Hero 
-          title={title}
-          subTitle={subTitle}
-        />}
+        {!noHero && <Hero main={main} title={title} subTitle={subTitle} />}
         <Menu />
         <Wrapper fullWidth>{children}</Wrapper>
         <Footer>
-          &copy; {split(data.site.buildTime, '.')[2]} Leafcode - Łukasz Tyszkiewicz<br />
+          &copy; {split(data.site.buildTime, '.')[2]} Leafcode - Łukasz
+          Tyszkiewicz
+          <br />
           <span>Ostatnia zmiana: {data.site.buildTime}</span>
         </Footer>
       </PageWrapper>
     </ThemeProvider>
   );
-}
-
-
+};

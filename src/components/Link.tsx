@@ -15,7 +15,7 @@ export const LinkUnderlineStyles = (color: string, colorHover: string) => css`
     transform: scaleX(0);
     transform-origin: 0 0;
     transition: transform 150ms ease-out;
-    background: ${color}
+    background: ${color};
   }
   &:hover {
     color: ${colorHover};
@@ -24,11 +24,11 @@ export const LinkUnderlineStyles = (color: string, colorHover: string) => css`
       transform: scaleX(1);
     }
   }
-`
+`;
 
 export const StyledLink = styled(Link)`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.darkText};
-  ${({ theme }) => LinkUnderlineStyles(theme.colors.darkText, theme.colors.accentSecondary)};
+  ${({ theme }) =>
+    LinkUnderlineStyles(theme.colors.darkText, theme.colors.accentSecondary)};
 `;
-
